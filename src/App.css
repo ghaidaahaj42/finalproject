@@ -1,0 +1,27 @@
+body, html, #root, .App {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+}
+
+.App .content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.navbar {
+  flex: 0 0 auto; /* Prevents the navbar from growing */
+}
+
+.screen {
+  flex: 1;
+  overflow: auto; /* Allows individual screens to scroll if content overflows */
+}

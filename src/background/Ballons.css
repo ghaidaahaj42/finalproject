@@ -1,0 +1,18 @@
+/* src/background/Balloons.css */
+.balloons {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  z-index: -1; /* Ensure balloons are behind other content */
+  background: linear-gradient(to bottom, #87ceeb, #f0e68c); /* Fallback gradient */
+}
+
+.balloon {
+  position: absolute;
+  bottom: -150px;
+  width: 250px;
+  height: auto;
+}
