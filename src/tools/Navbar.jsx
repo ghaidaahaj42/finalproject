@@ -1,19 +1,38 @@
 
-import React from "react";
+import React from 'react';
+import { NavLink } from 'react-router-dom';
 import '../styles/Navbar.css';
-function NavBar(){
-    return(
-        <div class="container">
-    <header class="d-flex justify-content-center py-3">
-      <ul class="nav nav-pills">
-        <li class="nav-item"><a href="/" class="nav-link active" aria-current="page">Home</a></li>
-        <li class="nav-item"><a href="/products" class="nav-link">Products</a></li>
-        <li class="nav-item"><a href="#" class="nav-link">AI help me!</a></li>
 
-        <li class="nav-item"><a href="#" class="nav-link">About</a></li>
-      </ul>
-    </header>
-  </div>
-    );
+function NavBar() {
+  return (
+      <div className="container">
+          <header className="d-flex justify-content-center py-3">
+              <ul className="nav nav-pills">
+                  <li className="nav-item">
+                      <NavLink to="/" className="nav-link" activeClassName="active" exact>
+                          Home
+                      </NavLink>
+                  </li>
+                  <li className="nav-item">
+                      <NavLink to="/products" className="nav-link" activeClassName="active">
+                          Products
+                      </NavLink>
+                  </li>
+                  <li className="nav-item">
+                      <NavLink to="/ai-help" className="nav-link" activeClassName="active">
+                          AI help me!
+                      </NavLink>
+                  </li>
+                  <li className="nav-item">
+                      <NavLink to="/about" className="nav-link" activeClassName="active">
+                          About
+                      </NavLink>
+                  </li>
+              </ul>
+          </header>
+      </div>
+  );
 }
+
 export default NavBar;
+
