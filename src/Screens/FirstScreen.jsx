@@ -15,7 +15,7 @@ function FirstScreen() {
 
     if (email === validEmail && password === validPassword) {
       setError('');
-      navigate('/second');
+      navigate('/products');
     } else {
       setError('Invalid email or password');
     }

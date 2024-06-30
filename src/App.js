@@ -17,7 +17,7 @@ function App() {
         <div className="content">
           <Routes>
             <Route path="/" element={<FirstScreen className="screen" />} />
-            <Route path="/second" element={<SecondScreen className="screen" />} />
+            {/* <Route path="/second" element={<SecondScreen className="screen" />} /> */}
             <Route path="/products" element={<Products className="screen" />} />
           </Routes>
         </div>
