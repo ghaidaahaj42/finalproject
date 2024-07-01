@@ -2,7 +2,7 @@ import React from 'react';
 import { Card, CardContent, CardMedia, Typography, Grid, IconButton,Box } from '@mui/material';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import '../../styles/product.css'
-export default function ProductCard({ id, name, description, image }) {
+export default function ProductCard({ id, name, description, image, isLiked, onLikeToggle }) {
   return (
     <Grid item xs={12} sm={6} md={4} key={id}>
       <Card className="product-card">
@@ -20,11 +20,11 @@ export default function ProductCard({ id, name, description, image }) {
           <Typography variant="body2" color="text.secondary" className="product-description">
             {description}
           </Typography>
-          <Box className="icon-container">
-            <IconButton aria-label="add to favorites">
-              <FavoriteIcon />
+          <div className="icon-container">
+            <IconButton aria-label="add to favorites" onClick={onLikeToggle}>
+              <FavoriteIcon color={isLiked ? "error" : "default"} />
             </IconButton>
-          </Box>
+          </div>
         </CardContent>
       </Card>
     </Grid>
