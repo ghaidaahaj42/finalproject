@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Grid ,Snackbar, Alert } from '@mui/material';
+import { Grid, Snackbar, Alert } from '@mui/material';
+
 import '../styles/Products.css';
 import ProductCard from './Components/Product';
 
@@ -14,6 +15,7 @@ function Products() {
     { id: 6, name: 'Product 3', description: 'This is product 3', image: 'https://m.media-amazon.com/images/I/71x1TrqgSmL._AC_UF894,1000_QL80_.jpg', isLiked: false },
   ]);
 
+  const [likedProducts, setLikedProducts] = useState([]);
   const [snackbarOpen, setSnackbarOpen] = useState(false);
   const [snackbarMessage, setSnackbarMessage] = useState('');
 
@@ -22,8 +24,15 @@ function Products() {
       product.id === id ? { ...product, isLiked: !product.isLiked } : product
     );
     setProducts(updatedProducts);
-    
+
     const likedProduct = updatedProducts.find(product => product.id === id);
+
+    if (likedProduct.isLiked) {
+      setLikedProducts([...likedProducts, likedProduct]);
+    } else {
+      setLikedProducts(likedProducts.filter(product => product.id !== id));
+    }
+
     const message = likedProduct.isLiked ? `You have added ${likedProduct.name}` : `You have removed ${likedProduct.name}`;
     setSnackbarMessage(message);
     setSnackbarOpen(true);
@@ -38,7 +47,7 @@ function Products() {
       <div className="card text-center custom-card">
         <h1>Explore Our Products</h1>
         <div className="card-body">
-          <Grid container spacing={3}>
+          <Grid style={{backgroundColor:'transparent'}} container spacing={3}>
             {products.map((product) => (
               <ProductCard
                 key={product.id}
@@ -61,6 +70,5 @@ function Products() {
     </div>
   );
 }
-
 
 export default Products;
