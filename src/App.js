@@ -1,32 +1,47 @@
-// App.js
-import React from 'react';
-import './App.css';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import FirstScreen from './Screens/FirstScreen';
-
-import Products from './Screens/Products';
-import NavBar from './tools/Navbar';
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Route, Routes,Switch } from 'react-router-dom';
+import Login from './Login';
+import About from './About';
+import Register from './Register';
+import Navbarlist from './Navbarlist';
 import Balloons from './background/ballons';
-import LikedProducts from './Screens/MyProducts';
-import SurveyForm from './Screens/AIForom'
+import HomePage from './HomePage';
+import Contact from './Contact';
+import SurveyForm from './AIForom';
+import Products from './Products';
+import './App.css';
+import ListOFMygifts from './ListOFMygifts';
+
 function App() {
+  const [users, setUsers] = useState([]);
+  const [currentUser, setCurrentUser] = useState(null);
+
+  const handleLogin = (username) => {
+    setCurrentUser(username);
+  };
+
+  const handleLogout = () => {
+    setCurrentUser(null);
+  };
 
   return (
-    <Router>
-      <div className="App">
-        <Balloons />
-        <NavBar className="navbar" />
-        <div className="content">
-          <Routes>
-            <Route path="/" element={<FirstScreen className="screen" />} />
-            {/* <Route path="/second" element={<SecondScreen className="screen" />} /> */}
-            <Route path="/products" element={<Products className="screen" />} />
-            <Route path="/myProducts" element={<LikedProducts  className="screen" />} />
-            <Route path="/ai-help" element={<SurveyForm  className="screen" />} />
-          </Routes>
-        </div>
+      
+    <div className="container">
+        <Balloons></Balloons> 
+        <Navbarlist currentUser={currentUser} onLogout={handleLogout} />
+        <Routes>
+         
+        <Route path="/" element={<HomePage></HomePage>} />
+          <Route path="/login" element={<Login users={users} onLogin={handleLogin} />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/ai-help" element={<SurveyForm/>} />
+          <Route path="/products" element={<Products/>} />
+          <Route path="/list-of-my-gifts" element={<ListOFMygifts/>} />
+          <Route path="/register" element={<Register users={users} setUsers={setUsers} />} />
+          
+        </Routes>
       </div>
-    </Router>
+    
   );
 }
 

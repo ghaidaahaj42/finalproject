@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Grid, Snackbar, Alert } from '@mui/material';
 
-import '../styles/Products.css';
-import ProductCard from './Components/Product';
+import './styles/Products.css';
+import ProductCard from './Product';
 
 function Products() {
   const [products, setProducts] = useState([

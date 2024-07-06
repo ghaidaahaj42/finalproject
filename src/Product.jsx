@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card, CardContent, CardMedia, Typography, Grid, IconButton,Box } from '@mui/material';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import '../../styles/product.css'
+import './styles/product.css'
 export default function ProductCard({ id, name, description, image, isLiked, onLikeToggle }) {
   return (
     <Grid item xs={12} sm={6} md={4} key={id}>

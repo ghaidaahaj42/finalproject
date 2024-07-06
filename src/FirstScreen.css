@@ -2,19 +2,19 @@
   
  /* styles/FirstScreen.css */
 .centered-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh; /* Full viewport height */
-    width: 100vw; /* Full viewport width */
-    margin: auto; /* Center the card horizontally */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 75vh; /* Full viewport height */
+
+  margin: auto; /* Center the card horizontally */
   }
   
   .custom-card {
     background: hsla(0, 0%, 100%, 0.709); /* Semi-transparent white background */
     margin: auto; /* Center the card horizontally */
     border-radius: 15px; /* Rounded corners */
-    height: 70vh; 
+    height: 100vh; 
     width: 90vw; 
   }
 

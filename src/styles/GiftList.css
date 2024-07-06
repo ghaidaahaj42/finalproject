@@ -1,0 +1,39 @@
+.gift-card {
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+    overflow: hidden; /* Ensure the content fits within the card */
+    height: 100%; /* Ensure the card takes full height */
+  }
+  
+  .gift-card:hover {
+    transform: scale(1.05);
+  }
+  
+  .gift-card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+  }
+  
+  .gift-card-body {
+    padding: 15px;
+  }
+  
+  .gift-card-title {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .gift-card-price {
+    font-size: 1em;
+    color: #ff69b4;
+    margin-bottom: 10px;
+  }
+  
+  .gift-card-description {
+    font-size: 0.9em;
+    color: #333;
+  }
+  
