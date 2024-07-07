@@ -1,16 +1,17 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes,Switch } from 'react-router-dom';
-import Login from './Login';
-import About from './About';
-import Register from './Register';
+import Login from './pages/Login';
+import About from './pages/About';
+import Register from './pages/Register';
 import Navbarlist from './Navbarlist';
 import Balloons from './background/ballons';
-import HomePage from './HomePage';
-import Contact from './Contact';
-import SurveyForm from './AIForom';
+import HomePage from './pages/HomePage';
+import Contact from './pages/Contact';
+import SurveyForm from './pages/AIForom';
 import Products from './Products';
 import './App.css';
-import ListOFMygifts from './ListOFMygifts';
+import ListOFMygifts from './pages/ListOFMygifts';
+import Invetation from './pages/invetation';
 
 function App() {
   const [users, setUsers] = useState([]);
@@ -38,6 +39,7 @@ function App() {
           <Route path="/products" element={<Products/>} />
           <Route path="/list-of-my-gifts" element={<ListOFMygifts/>} />
           <Route path="/register" element={<Register users={users} setUsers={setUsers} />} />
+          <Route path="/invetation" element={<Invetation />} />
           
         </Routes>
       </div>

@@ -4,6 +4,7 @@ import ChildList from './ChildList';
 import GiftList from './GiftList';
 import AddChildForm from './AddChildForm';
 import AddGiftForm from './AddGiftForm';
+import InvetationForom from "./inviteForom";
 const ListOFMygifts = () => {
   
 
@@ -45,6 +46,8 @@ const ListOFMygifts = () => {
   const [selectedChild, setSelectedChild] = useState(null);
   const [addingChild, setAddingChild] = useState(false);
   const [addingGift, setAddingGift] = useState(false);
+  const [invite, setInvitation] = useState(false);
+
 
   const addChild = (child) => {
     setChildren([...children, child]);
@@ -77,12 +80,26 @@ const ListOFMygifts = () => {
           {selectedChild && <GiftList gifts={selectedChild.gifts} />}
         </div>
       </div>
-
+      {selectedChild && (
+  <div className="d-flex justify-content-center">
+    <button className="btn btn-secondary" onClick={() => setInvitation(true)}>סיימתי ! להזמין חברים</button>
+  </div>
+)}
       {addingChild && <AddChildForm addChild={addChild} setAddingChild={setAddingChild} />}
+
       {addingGift && selectedChild && (
         <AddGiftForm 
           addGift={addGift} 
           setAddingGift={setAddingGift} 
+          childName={selectedChild.name} 
+        />
+      )}
+
+
+
+{invite && selectedChild && (
+        <InvetationForom 
+        listOfGifts={selectedChild.gifts}
           childName={selectedChild.name} 
         />
       )}

@@ -1,5 +1,5 @@
 import React from 'react';
-import '../src/styles/GiftList.css';
+import '../styles/GiftList.css';
 
 const GiftList = ({ gifts }) => {
   return (

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate,Link } from 'react-router-dom';
-import './FirstScreen.css';
+import '../styles/FirstScreen.css';
 
 
 const Login = ({ users, onLogin }) => {
