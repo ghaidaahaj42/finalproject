@@ -6,8 +6,8 @@ import { FormControlLabel, RadioGroup, Radio, FormControl, FormLabel } from '@mu
 function SurveyForm() {
   return (
 
-    <div className="centered-container">
-    <div className="card text-center custom-card">
+    <div className="container">
+    <div className="home-content text-center mb-5">
     <h1>Let Us Know The Child</h1>
       <div className="card-body">
       <Container className="mt-4">

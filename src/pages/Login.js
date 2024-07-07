@@ -21,8 +21,8 @@ const Login = ({ users, onLogin }) => {
   };
 
   return (
-    <div className="centered-container">
-    <div className="card text-center custom-card">
+    <div className="container">
+    <div className="home-content text-center mb-5">
       <div className="card-body">
         <h1>Welcome!</h1>
         <h5 className="card-title">Choosing Gifts More Easily</h5>

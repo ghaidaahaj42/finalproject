@@ -1,0 +1,20 @@
+.nav-pills .nav-link {
+  color: #5b2020 !important; /* Inactive link color */
+  font-weight: bold;
+  background: transparent
+}
+
+.nav-pills .nav-link.active {
+/* 
+  border-style: solid; /* Set the border style 
+  border-width: 2px; Set the border width 
+  border-color: #574a4a32 !important;  */
+  font-weight: bold;
+  background-color: hsla(0, 0%, 100%, 0.709) !important; 
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 3px 8px;
+}
+
+.nav-pills .nav-link:hover {
+  color: rgb(144, 51, 51) !important; /* Hover link color */
+  background: hsla(0, 0%, 100%, 0.187); /* Background color on hover */
+}

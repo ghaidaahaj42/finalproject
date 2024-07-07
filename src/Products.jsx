@@ -43,8 +43,8 @@ function Products() {
   };
 
   return (
-    <div className="centered-container">
-      <div className="card text-center custom-card">
+    <div className="container">
+    <div className="home-content text-center mb-5">
         <h1>Explore Our Products</h1>
         <div className="card-body">
           <Grid style={{backgroundColor:'transparent'}} container spacing={3}>
