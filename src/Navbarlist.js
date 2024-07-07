@@ -8,8 +8,8 @@ import { Link } from 'react-router-dom';
 
 const Navbarlist = ({ currentUser, onLogout }) => {
   return (
-    <Navbar bg="myColor" variant="dark" sticky="top">
-      <Container>
+    <Navbar bg="transparent" variant="dark" sticky="top">
+      <Container style={{backgroundColor: 'hsla(0, 0%, 100%, 0.709);'}}>
         <Navbar.Brand as={Link} to="/">GiftFlow</Navbar.Brand>
         <Nav className="ms-auto">
           <Nav.Link as={Link} to="/">Home</Nav.Link>

@@ -4,7 +4,7 @@ import ChildList from './ChildList';
 import GiftList from './GiftList';
 import AddChildForm from './AddChildForm';
 import AddGiftForm from './AddGiftForm';
-import InvetationForom from "./inviteForom";
+import InvetationForom from './InvetationForom'
 const ListOFMygifts = () => {
   
 

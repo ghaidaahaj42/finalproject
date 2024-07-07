@@ -9,15 +9,16 @@ const HomePage = () => {
   return (
     <div>
       <div className="container mt-5">
-        <div className="logo-container mb-4 text-center">
+
+        <div className="home-content text-center mb-5">
+          <h1 className="mb-4">Welcome to Birthday Gifts</h1>
+          <div className="logo-container mb-4 text-center">
           <img 
             src="giftflowlogoclr.png" 
             alt="Birthday Gifts Logo" 
             className="logo-image"
           />
         </div>
-        <div className="home-content text-center mb-5">
-          <h1 className="mb-4">Welcome to Birthday Gifts</h1>
           <p className="lead">Discover the Perfect Gifts for Your Child with Ease</p>
           <p>
             At GiftFlow, we know that nothing is more important than your child’s smile. We understand the challenge of finding the perfect gifts for your child. Our innovative gift-sharing platform uses advanced A.I. to help you create personalized gift lists that make every event more memorable and filled with joy.

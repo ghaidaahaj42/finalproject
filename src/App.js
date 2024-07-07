@@ -11,7 +11,8 @@ import SurveyForm from './pages/AIForom';
 import Products from './Products';
 import './App.css';
 import ListOFMygifts from './pages/ListOFMygifts';
-import Invetation from './pages/invetation';
+import InvetationPage from './pages/InvetationPage';
+import InvetationForom from './pages/InvetationForom'
 
 function App() {
   const [users, setUsers] = useState([]);
@@ -39,7 +40,8 @@ function App() {
           <Route path="/products" element={<Products/>} />
           <Route path="/list-of-my-gifts" element={<ListOFMygifts/>} />
           <Route path="/register" element={<Register users={users} setUsers={setUsers} />} />
-          <Route path="/invetation" element={<Invetation />} />
+          <Route path="/invitation/:childName" element={<InvetationPage />} />
+          <Route path="/invitation-form" element={<InvetationForom />} />
           
         </Routes>
       </div>
