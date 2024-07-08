@@ -49,7 +49,7 @@ const About = () => {
           />
           <div className="container">
             <h2>Ghidaa Haj</h2>
-            <p className="title">Website manager</p>
+            <p className="title">CS and Business Administration Student at Tel Aviv University</p>
             <p>gaidaahaj@mail.tau.ac.il</p>
           </div>
         </div>
