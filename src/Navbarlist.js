@@ -10,12 +10,12 @@ const Navbarlist = ({ currentUser, onLogout }) => {
         <ul className="nav nav-pills">
           <li className="nav-item">
             <NavLink to="/" className="nav-link" activeClassName="active" exact>
-              Home
+              בית
             </NavLink>
           </li>
           <li className="nav-item">
             <NavLink to="/products" className="nav-link" activeClassName="active">
-              Products
+              חנות
             </NavLink>
           </li>
           <li className="nav-item">
@@ -25,7 +25,7 @@ const Navbarlist = ({ currentUser, onLogout }) => {
           </li>
           <li className="nav-item">
             <NavLink to="/about" className="nav-link" activeClassName="active">
-              About
+              עלינו
             </NavLink>
           </li>
         </ul>
@@ -34,23 +34,23 @@ const Navbarlist = ({ currentUser, onLogout }) => {
           {!currentUser ? (
             <li className="nav-item">
               <NavLink to="/login" className="nav-link" activeClassName="active">
-                Login
+                כניסה
               </NavLink>
             </li>
           ) : (
             <li className="nav-item d-flex align-items-center">
               <NavDropdown title={currentUser} id="navbarScrollingDropdown">
                 <NavDropdown.Item as={Link} to="/list-of-my-gifts">
-                  List Of My Gifts
+                  רשימת המתנות שלי
                 </NavDropdown.Item>
                 <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
                 <NavDropdown.Divider />
-                <NavDropdown.Item href="#action5">
+                {/* <NavDropdown.Item href="#action5">
                   Something else here
-                </NavDropdown.Item>
+                </NavDropdown.Item> */}
               </NavDropdown>
               <Nav.Link as={Link} to="/login" onClick={onLogout} className="nav-link ml-2">
-                Logout
+                יציאה
               </Nav.Link>
             </li>
           )}
