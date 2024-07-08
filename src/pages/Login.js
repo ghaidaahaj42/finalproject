@@ -36,6 +36,7 @@ const Login = ({ users, onLogin }) => {
             onChange={(e) => setEmail(e.target.value)}
             required
           />
+          <br/>
           <input
             type="password"
             className="mb-2 mt-2 mr-2 ml-2 input"
@@ -44,6 +45,8 @@ const Login = ({ users, onLogin }) => {
             onChange={(e) => setPassword(e.target.value)}
             required
           />
+          <br/>
+          <br/>
           <button type="submit" className="btn btn-primary form-btn">Sign In</button>
           {error && <div className="error-message">{error}</div>}
         </form>

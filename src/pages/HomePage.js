@@ -26,6 +26,22 @@ const HomePage = () => {
           </h5>
         </div>
         
+        <div className="text-center mt-5">
+          <h3 className="mb-4">Companies with Us</h3>
+          <div className="moving-bar">
+            <div className="moving-bar-inner">
+              <img src="ToysRus.png" alt="Company Logo 1" />
+              <img src="companyLogo2.png" alt="Company Logo 2" className="transparent" />
+              <img src="Marmelada.png" alt="Company Logo 3" />
+              <img src="companyLogo4.png" alt="Company Logo 4" className="transparent" />
+              <img src="Mamme.png" alt="Company Logo 5" />
+              <img src="companyLogo1.png" alt="Company Logo 6" className="transparent"/>
+            </div>
+          </div>
+        </div>
+        <br/>
+        <br/>
+        <br/>
         <h3 className="text-center mb-4">How It Works:</h3>
         <div className="text-center mb-4">
           <button 
@@ -37,12 +53,6 @@ const HomePage = () => {
             {open ? 'Hide Details' : 'Show Details'}
           </button>
         </div>
-
-
-
-
-
-
 
 
         <Collapse in={open}>
@@ -105,15 +115,16 @@ const HomePage = () => {
       </div>
 
 
+
+
+
+
+
   <footer className="text-lg-start mt-5" style={{ backgroundColor: 'transparent' , border: 'none',boxShadow:'none'}}>
     <div className="text-center p-3 " style={{color:' rgb(144, 51, 51) '}}>
          &copy; 2024 GiftFlow. All rights reserved.
     </div>
 </footer>
-
-
-
-
     </div>
   );
 };

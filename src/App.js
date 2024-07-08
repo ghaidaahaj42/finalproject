@@ -10,9 +10,10 @@ import Contact from './pages/Contact';
 import SurveyForm from './pages/AIForom';
 import Products from './Products';
 import './App.css';
-import ListOFMygifts from './pages/ListOFMygifts';
 import InvetationPage from './pages/InvetationPage';
 import InvetationForom from './pages/InvetationForom'
+import GiftsPage from './pages/GiftsPage';
+import QuestionsPage from './pages/QuestionsPage';
 
 function App() {
   const [users, setUsers] = useState([]);
@@ -29,6 +30,7 @@ function App() {
   return (
       
     <div className="container">
+
         <Balloons></Balloons> 
         <Navbarlist currentUser={currentUser} onLogout={handleLogout} />
         <Routes>
@@ -38,12 +40,14 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/ai-help" element={<SurveyForm/>} />
           <Route path="/products" element={<Products/>} />
-          <Route path="/list-of-my-gifts" element={<ListOFMygifts/>} />
+          <Route path="/gifts-Page" element={<GiftsPage/>} />
+          <Route path="/questions-page" element={<QuestionsPage/>} />
           <Route path="/register" element={<Register users={users} setUsers={setUsers} />} />
           <Route path="/invitation/:childName" element={<InvetationPage />} />
           <Route path="/invitation-form" element={<InvetationForom />} />
           
         </Routes>
+       
       </div>
     
   );

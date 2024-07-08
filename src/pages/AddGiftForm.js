@@ -1,71 +1,71 @@
 import React, { useState } from 'react';
 
 const AddGiftForm = ({ addGift, setAddingGift, childName }) => {
-  const [gift, setGift] = useState({ image: '', name: '', price: '', description: '' });
+  const [gift, setGift] = useState({
+    id: Date.now(),
+    image: '',
+    name: '',
+    price: '',
+    description: ''
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setGift({ ...gift, [name]: value });
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     addGift(childName, gift);
-    setAddingGift(false);
   };
 
   return (
-    <div className="modal show d-block" tabIndex="-1">
-      <div className="modal-dialog">
-        <div className="modal-content">
-          <div className="modal-header">
-            <h5 className="modal-title">Add Gift for {childName}</h5>
-            <button type="button" className="btn-close" onClick={() => setAddingGift(false)}></button>
+    <div className="modal">
+      <div className="modal-content">
+        <h2>Add Gift</h2>
+        <form onSubmit={handleSubmit}>
+          <div className="form-group">
+            <label>Image URL</label>
+            <input 
+              type="text" 
+              name="image" 
+              value={gift.image} 
+              onChange={handleChange} 
+              className="form-control"
+            />
           </div>
-          <div className="modal-body">
-            <form onSubmit={handleSubmit}>
-              <div className="mb-3">
-                <label htmlFor="giftImage" className="form-label">Gift Image URL</label>
-                <input 
-                  type="text" 
-                  className="form-control" 
-                  id="giftImage" 
-                  value={gift.image}
-                  onChange={(e) => setGift({ ...gift, image: e.target.value })}
-                  required 
-                />
-              </div>
-              <div className="mb-3">
-                <label htmlFor="giftName" className="form-label">Gift Name</label>
-                <input 
-                  type="text" 
-                  className="form-control" 
-                  id="giftName" 
-                  value={gift.name}
-                  onChange={(e) => setGift({ ...gift, name: e.target.value })}
-                  required 
-                />
-              </div>
-              <div className="mb-3">
-                <label htmlFor="giftPrice" className="form-label">Gift Price</label>
-                <input 
-                  type="text" 
-                  className="form-control" 
-                  id="giftPrice" 
-                  value={gift.price}
-                  onChange={(e) => setGift({ ...gift, price: e.target.value })}
-                  required 
-                />
-              </div>
-              <div className="mb-3">
-                <label htmlFor="giftDescription" className="form-label">Gift Description</label>
-                <textarea 
-                  className="form-control" 
-                  id="giftDescription" 
-                  value={gift.description}
-                  onChange={(e) => setGift({ ...gift, description: e.target.value })}
-                  required 
-                ></textarea>
-              </div>
-              <button type="submit" className="btn btn-primary">Add Gift</button>
-            </form>
+          <div className="form-group">
+            <label>Name</label>
+            <input 
+              type="text" 
+              name="name" 
+              value={gift.name} 
+              onChange={handleChange} 
+              className="form-control"
+            />
           </div>
-        </div>
+          <div className="form-group">
+            <label>Price</label>
+            <input 
+              type="text" 
+              name="price" 
+              value={gift.price} 
+              onChange={handleChange} 
+              className="form-control"
+            />
+          </div>
+          <div className="form-group">
+            <label>Description</label>
+            <textarea 
+              name="description" 
+              value={gift.description} 
+              onChange={handleChange} 
+              className="form-control"
+            />
+          </div>
+          <button type="submit" className="btn btn-success">Add Gift</button>
+          <button type="button" className="btn btn-secondary" onClick={() => setAddingGift(false)}>Cancel</button>
+        </form>
       </div>
     </div>
   );

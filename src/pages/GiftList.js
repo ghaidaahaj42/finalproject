@@ -1,24 +1,24 @@
 import React from 'react';
-import '../styles/GiftList.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import '../styles/GiftList.css'; // تأكد من وجود ملف CSS هنا
 
-const GiftList = ({ gifts }) => {
+const GiftList = ({ gifts, deleteGift, setEditingGift, childName }) => {
   return (
-    <div>
-      <h2>Gifts</h2>
-      <div className="row">
-        {gifts.map((gift, index) => (
-          <div key={index} className="col-md-4 mb-3">
-            <div className="gift-card">
-              <img src={gift.image} alt={gift.name} />
-              <div className="gift-card-body">
-                <h5 className="gift-card-title">{gift.name}</h5>
-                <p className="gift-card-price"><strong>Price:</strong> {gift.price}</p>
-                <p className="gift-card-description"><strong>Description:</strong> {gift.description}</p>
-              </div>
+    <div className="gift-list">
+      {gifts.map(gift => (
+        <div key={gift.id} className="card gift-card mb-3">
+          <img src={gift.image} className="card-img-top" alt={gift.name} />
+          <div className="card-body">
+            <h5 className="card-title">{gift.name}</h5>
+            <p className="card-text">{gift.price}</p>
+            <p className="card-text">{gift.description}</p>
+            <div className="gift-actions">
+              <button className="btn btn-warning" onClick={() => setEditingGift(gift)}>Edit</button>
+              <button className="btn btn-danger" onClick={() => deleteGift(childName, gift.id)}>Delete</button>
             </div>
           </div>
-        ))}
-      </div>
+        </div>
+      ))}
     </div>
   );
 };

@@ -1,14 +1,17 @@
 import React, { useState } from 'react';
 import { useNavigate,Link } from 'react-router-dom';
+import '../styles/FirstScreen.css';
 
 const Register = ({ users, setUsers }) => {
-  const [email, setEmail] = useState('');
+  const [email, setEmail]=useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const navigate = useNavigate();
+ 
   const handleSubmit = (e) => {
     e.preventDefault();
+    
     if (password !== confirmPassword) {
       setError('confirmPassword is false');
       return;
@@ -22,8 +25,8 @@ const Register = ({ users, setUsers }) => {
   };
 
   return (
-    <div className="centered-container">
-    <div className="card text-center custom-card">
+    <div className="container">
+    <div className="home-content text-center mb-5">
       <div className="card-body">
         <h1>Welcome!</h1>
         <h5 className="card-title">Choosing Gifts More Easily</h5>
@@ -37,6 +40,8 @@ const Register = ({ users, setUsers }) => {
             onChange={(e) => setEmail(e.target.value)}
             required
           />
+          <br/>
+          
           <input
             type="password"
             className="mb-2 mt-2 mr-2 ml-2 input"
@@ -44,7 +49,7 @@ const Register = ({ users, setUsers }) => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
-          />
+          /><br/>
           <input
             type="password"
             className="mb-2 mt-2 mr-2 ml-2 input"
@@ -53,7 +58,9 @@ const Register = ({ users, setUsers }) => {
             onChange={(e) => setConfirmPassword(e.target.value)}
             required
           />
-          <button type="submit" className="btn btn-primary form-btn">Sign In</button>
+          <br/>
+          <br/>
+          <button type="submit" className="btn btn-primary form-btn">Sign Up</button>
           {error && <div className="error-message">{error}</div>}
         </form>
         <div>
@@ -71,12 +78,6 @@ const Register = ({ users, setUsers }) => {
             </svg>
             <span>Log in with Google</span>
           </div>
-          <p className="sign-up-label">
-            <span className="sign-up-link">forgot my password</span>
-          </p>
-          <p className="sign-up-label">
-            Don't have an account? <Link to="/register">Sign up</Link>
-          </p>
         </div>
       </div>
     </div>

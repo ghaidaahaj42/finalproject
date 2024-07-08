@@ -18,7 +18,7 @@ const About = () => {
         <div className=" team-card">
           <img
             src={"b17fe582-970a-4881-9556-d0dfa01ca40c.jpg"}
-            alt="Jane"
+            alt="Basel Arw photo"
             style={{ width: "95%", borderRadius: "50%" }}
           />
           <div className="container">
@@ -31,11 +31,11 @@ const About = () => {
         <div className=" team-card">
           <img
             src={"OhadElkayam.png"}
-            alt="Jane"
+            alt="Ohad Elkayam photo"
             style={{ width: "100%", borderRadius: "50%" }}
           />
           <div className="container">
-            <h2>Ohad elkayam</h2>
+            <h2>Ohad Elkayam</h2>
             <p className="title">CS Student at Tel Aviv University</p>
             <p>ohadelkayam@mail.tau.ac.il</p>
           </div>

@@ -40,10 +40,12 @@ const Navbarlist = ({ currentUser, onLogout }) => {
           ) : (
             <li className="nav-item d-flex align-items-center">
               <NavDropdown title={currentUser} id="navbarScrollingDropdown">
-                <NavDropdown.Item as={Link} to="/list-of-my-gifts">
+                <NavDropdown.Item as={Link} to="/gifts-Page">
                   רשימת המתנות שלי
                 </NavDropdown.Item>
-                <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
+                <NavDropdown.Item as={Link} to="/questions-page">
+                  ילדים שלי
+                </NavDropdown.Item>
                 <NavDropdown.Divider />
                 {/* <NavDropdown.Item href="#action5">
                   Something else here
