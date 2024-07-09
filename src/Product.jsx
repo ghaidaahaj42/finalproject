@@ -20,11 +20,11 @@ export default function ProductCard({ id, name, description, image, isLiked, onL
           <Typography variant="body2" color="text.secondary" className="product-description transparentBackground">
             {description}
           </Typography>
-          <div className="icon-container transparentBackground">
+          {/* <div className="icon-container transparentBackground">
             <IconButton aria-label="add to favorites" onClick={onLikeToggle}>
               <FavoriteIcon color={isLiked ? "error" : "default"} />
             </IconButton>
-          </div>
+          </div> */}
         </CardContent>
       </Card>
     </Grid>

@@ -1,3 +1,15 @@
+
+h1 {
+    margin-top: 0; /* Remove default margin */
+}
+
+.home-content {
+    text-align: center;
+}
+
+
+
+
 .gift-container {
     position: fixed; /* Fix the position to the viewport */
     bottom: -200px;  /* Start from below the viewport */
@@ -9,20 +21,15 @@
     animation: fly 5s forwards ease-in-out;
 }
 
-.home-content {
-    text-align: center;
-}
 
-h1 {
-    margin-top: 0; /* Remove default margin */
-}
+
 
 @keyframes fly {
     0% {
         bottom: -200px; /* Start below the viewport */
     }
     100% {
-        bottom: 50%;    /* Fly to the center of the viewport */
+        bottom: 100%;    /* Fly to the center of the viewport */
     }
 }
 
@@ -42,3 +49,4 @@ h1 {
 .gift-open .gift-lid {
     transform: rotateX(-90deg);
 }
+
