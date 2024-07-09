@@ -5,11 +5,19 @@ import { FormControlLabel, RadioGroup, Radio, FormControl ,TextareaAutosize} fro
 import Textarea from '@mui/joy/Textarea';
 import { BsArrowLeft, BsArrowRight } from 'react-icons/bs';
 import '../styles/Aiforom.css';
+import { Grid, Snackbar, Alert } from '@mui/material';
+
+import ProductCard from '../Product'
 const questions = [
   {
     id: 0,
     title: "מה הגיל של הילד.ה ?",
-    options: []
+    options: [
+      { value: "3-6", label: "3-6" },
+      { value: "6-10", label: "6-10" },
+      { value: "10-12 ", label: "10-12 " },
+      { value: "12-16", label: "12-16" }
+    ]
   },
   {
     id: 1,
@@ -122,9 +130,16 @@ const questions = [
 
 
 
+
 function SurveyForm() {
+  const myProducts = [
+    { id: 1, name: 'Lego Package', description: 'This is product 1', image: 'https://www.lego.com/cdn/cs/set/assets/blt61f68cd89d49cc06/11029_alt1.png'},
+    { id: 2, name: 'Chess', description: 'This is product 2', image: 'https://5.imimg.com/data5/PG/LD/CL/SELLER-14274915/magnetic-chess-game.jpg' },
+    { id: 3, name: 'Product 3', description: 'This is product 3', image: 'https://m.media-amazon.com/images/I/71x1TrqgSmL._AC_UF894,1000_QL80_.jpg'},
+  ];
   const [step, setStep] = useState(-1); // State to track current step/question
   const [answeredCount, setAnsweredCount] = useState(0); // State to track answered questions count
+  const [isFinished, setIsFinished] = useState(false); // State to track if the survey is finished
 
   const handleNext = () => {
     if (step < questions.length - 1) {
@@ -140,65 +155,82 @@ function SurveyForm() {
     }
   };
 
+  const handleFinish = () => {
+    setIsFinished(true); // Mark the survey as finished
+  };
+
   return (
     <div className="container">
       <div className="home-content text-center mb-5">
         <div className="card-body">
           <div className="survey-content">
-            {step === -1 ? (
-              <div className="container text-center">
-                <h1>בואו קצת נקיר את הילד שמחפשים בשבילו מתנה </h1>
-                <p>.אנחנו נציג לפניכם 6 שאלות שאתם חייבים לענות עליהם, כדי שהבינה מלאכותית תעזור לכם היטב </p>
-                <p> נשמע לכם סבבה ? </p>
-                <Button variant="primary" onClick={handleNext}>בואו נתחיל</Button>
+            {isFinished ? (
+               <div className="container">
+        
+      <h1> לפי התשובות שלך אנחנו מציעים לך לקנות :</h1>
+      <div className="card-body">
+      <Grid style={{backgroundColor:'transparent'}} container spacing={3}>
+            {myProducts.map((product) => (
+              <ProductCard
+                key={product.id}
+                id={product.id}
+                name={product.name}
+                image={product.image}
+                description={product.description}
+         
+              />
+            ))}
+          </Grid>
+       
+        </div>
               </div>
             ) : (
-
-<div className="container text-center" id="questions">
-<ProgressBar striped variant="info"  now={answeredCount} max={questions.length} label={`${answeredCount} מתוך ${questions.length} שאלות`} className="mb-3" />
-
-
-         <div className="container text-center " id="questions">
-
-         
-                <h3>{questions[step].title}</h3>
-     <FormControl component="fieldset" className="question-container">
-  {questions[step].options.length > 0 ? (
-    <RadioGroup name={`question-${questions[step].id}`} className="options-group">
-      {questions[step].options.map(option => (
-        <FormControlLabel key={option.value} value={option.value} control={<Radio />} label={option.label} />
-      ))}
-    </RadioGroup>
-  ) : (
-    <Textarea
-      color="primary"
-      disabled={false}
-      minRows={2}
-      size="sm"
-      variant="outlined"
-    />
-  )}
-</FormControl>
-
-
-
-                <div className="mt-4 d-flex justify-content-between">
-                {step >=0 && (
-                    <Button variant="secondary" id="btn" onClick={handlePrev}>
-                      <BsArrowRight />
-                    </Button>
-                  )}
-                  {step < questions.length - 1 ? (
-                    <Button variant="primary" id="btn" onClick={handleNext}>
-                      <BsArrowLeft />
-                    </Button>
-                  ) : (
-                    <Button variant="success" id="btn">Finish</Button>
-                  )}
-
+              step === -1 ? (
+                <div className="container text-center">
+                  <h1>בואו קצת נקיר את הילד שמחפשים בשבילו מתנה </h1>
+                  <p>.אנחנו נציג לפניכם 6 שאלות שאתם חייבים לענות עליהם, כדי שהבינה מלאכותית תעזור לכם היטב </p>
+                  <p> נשמע לכם סבבה ? </p>
+                  <Button variant="primary" onClick={handleNext}>בואו נתחיל</Button>
                 </div>
-              </div>
-              </div>
+              ) : (
+                <div className="container text-center" id="questions">
+                  <ProgressBar striped variant="info" now={answeredCount} max={questions.length} label={`${answeredCount} מתוך ${questions.length} שאלות`} className="mb-3" />
+                  <div className="container text-center" id="questions">
+                    <h3>{questions[step].title}</h3>
+                    <FormControl component="fieldset" className="question-container">
+                      {questions[step].options.length > 0 ? (
+                        <RadioGroup name={`question-${questions[step].id}`} className="options-group">
+                          {questions[step].options.map(option => (
+                            <FormControlLabel key={option.value} value={option.value} control={<Radio />} label={option.label} />
+                          ))}
+                        </RadioGroup>
+                      ) : (
+                        <Textarea
+                          color="primary"
+                          disabled={false}
+                          minRows={7}
+                          size="lg"
+                          variant="outlined"
+                        />
+                      )}
+                    </FormControl>
+                    <div className="mt-4 d-flex justify-content-between">
+                      {step >= 0 && (
+                        <Button variant="secondary" id="btn" onClick={handlePrev}>
+                          <BsArrowRight />
+                        </Button>
+                      )}
+                      {step < questions.length - 1 ? (
+                        <Button variant="primary" id="btn" onClick={handleNext}>
+                          <BsArrowLeft />
+                        </Button>
+                      ) : (
+                        <Button variant="success" id="btn" onClick={handleFinish}>Finish</Button>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              )
             )}
           </div>
         </div>
