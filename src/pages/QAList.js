@@ -28,7 +28,7 @@ const QAList = ({ questions, updateAnswer, childName }) => {
 
   return (
     <div>
-      <h2>Questions and Answers for {childName}</h2>
+      <h2>שאלות ותשובות עבור {childName}</h2>
       <ul className="list-group">
         {questions.map((qa, index) => (
           <li key={index} className="list-group-item">
@@ -43,7 +43,7 @@ const QAList = ({ questions, updateAnswer, childName }) => {
               className="btn btn-primary mt-2"
               onClick={() => submitAnswer(qa.question)}
             >
-              Submit Answer
+              אישור
             </button>
           </li>
         ))}

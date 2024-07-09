@@ -5,7 +5,7 @@ import '../../styles/GiftList.css';
 const GiftList = ({ gifts, deleteGift, setEditingGift, childName }) => {
   return (
     <div className="gift-list">
-      {gifts.map(gift => (
+      {gifts?.map(gift => (
         <div key={gift.id} className="card gift-card mb-3">
           <img src={gift.image} className="card-img-top" alt={gift.name} />
           <div className="card-body">
@@ -13,8 +13,8 @@ const GiftList = ({ gifts, deleteGift, setEditingGift, childName }) => {
             <p className="card-text">{gift.price}</p>
             <p className="card-text">{gift.description}</p>
             <div className="gift-actions">
-              <button className="btn btn-warning" onClick={() => setEditingGift(gift)}>Edit</button>
-              <button className="btn btn-danger" onClick={() => deleteGift(childName, gift.id)}>Delete</button>
+              
+              <button className="btn btn-danger" onClick={() => deleteGift(childName, gift.id)}>מחק</button>
             </div>
           </div>
         </div>

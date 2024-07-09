@@ -13,6 +13,7 @@ import InvetationPage from './pages/InvetationPages/InvetationPage';
 import InvetationForom from './pages/InvetationPages/InvetationForom'
 import GiftsPage from './pages/accountPages/GiftsPage';
 import QuestionsPage from './pages/QuestionsPage';
+import { ChildProvider } from './pages/context/ChildContext';
 
 function App() {
   const [users, setUsers] = useState([{ email: 'test@gmail.com', password: '123' }]);
@@ -30,7 +31,7 @@ function App() {
   return (
       
     <div className="container">
-
+<ChildProvider>
         <Balloons></Balloons> 
         <Navbarlist currentUser={currentUser} onLogout={handleLogout} />
         <Routes>
@@ -47,7 +48,7 @@ function App() {
           <Route path="/invitation-form" element={<InvetationForom />} />
           
         </Routes>
-       
+        </ChildProvider>
       </div>
     
   );

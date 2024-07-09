@@ -22,10 +22,10 @@ const AddGiftForm = ({ addGift, setAddingGift, childName }) => {
   return (
     <div className="modal">
       <div className="modal-content">
-        <h2>Add Gift</h2>
+        <h2>הוספת מתנה</h2>
         <form onSubmit={handleSubmit}>
           <div className="form-group">
-            <label>Image URL</label>
+            <label>קישור למתנה</label>
             <input 
               type="text" 
               name="image" 
@@ -35,7 +35,7 @@ const AddGiftForm = ({ addGift, setAddingGift, childName }) => {
             />
           </div>
           <div className="form-group">
-            <label>Name</label>
+            <label>שם</label>
             <input 
               type="text" 
               name="name" 
@@ -45,7 +45,7 @@ const AddGiftForm = ({ addGift, setAddingGift, childName }) => {
             />
           </div>
           <div className="form-group">
-            <label>Price</label>
+            <label>מחיר</label>
             <input 
               type="text" 
               name="price" 
@@ -55,7 +55,7 @@ const AddGiftForm = ({ addGift, setAddingGift, childName }) => {
             />
           </div>
           <div className="form-group">
-            <label>Description</label>
+            <label>תיאור</label>
             <textarea 
               name="description" 
               value={gift.description} 
@@ -63,8 +63,8 @@ const AddGiftForm = ({ addGift, setAddingGift, childName }) => {
               className="form-control"
             />
           </div>
-          <button type="submit" className="btn btn-success">Add Gift</button>
-          <button type="button" className="btn btn-secondary" onClick={() => setAddingGift(false)}>Cancel</button>
+          <button type="submit" className="btn btn-success">הוספת מתנה</button>
+          <button type="button" className="btn btn-secondary" onClick={() => setAddingGift(false)}>ביטול</button>
         </form>
       </div>
     </div>

@@ -1,47 +1,20 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { useChild } from './context/ChildContext'; // استيراد الهوك
 import ChildList from './accountPages/ChildList';
 import QAList from './QAList';
 import AddChildForm from './accountPages/AddChildForm';
 import EditChildForm from './accountPages/EditChildForm';
 
 const QuestionsPage = () => {
-  const [children, setChildren] = useState([
-    { 
-      name: 'John', 
-      questions: [
-        { question: 'What is your favorite color?', answer: '' },
-        { question: 'What is your favorite toy?', answer: '' },
-      ]
-    },
-    { 
-      name: 'Jane', 
-      questions: [
-        { question: 'What is your favorite food?', answer: '' },
-        { question: 'What is your favorite game?', answer: '' },
-      ]
-    }
-  ]);
+  const { childrenData, addChild, updateChild, deleteChild,setChildrenData } = useChild(); // استخدام الهوك
+  const [children, setChildren] = useState(childrenData);
 
   const [selectedChild, setSelectedChild] = useState(null);
   const [addingChild, setAddingChild] = useState(false);
   const [editingChild, setEditingChild] = useState(null);
-
-  const addChild = (child) => {
-    setChildren([...children, child]);
-  };
-
-  const updateChild = (oldName, newName) => {
-    setChildren(children.map(child => 
-      child.name === oldName ? { ...child, name: newName } : child
-    ));
-  };
-
-  const deleteChild = (childName) => {
-    setChildren(children.filter(child => child.name !== childName));
-    setSelectedChild(null);
-  };
-
+ 
+  
   const updateAnswer = (childName, question, answer) => {
     setChildren(children.map(child => 
       child.name === childName 
@@ -52,20 +25,20 @@ const QuestionsPage = () => {
 
   return (
     <div className="container mt-5">
-      <h1 className="text-center mb-4">Answer Questions for Each Child</h1>
+      <h1 className="text-center mb-4">בואו נכיר את הילד שלכם...</h1>
       <div className="row mb-3">
         <div className="col-md-6">
-          <button className="btn btn-primary" onClick={() => setAddingChild(true)}>Add Child</button>
+          <button className="btn btn-primary" onClick={() => setAddingChild(true)}>הוספת ילד</button>
         </div>
         <div className="col-md-6 text-right">
           {selectedChild && (
-            <button className="btn btn-secondary" onClick={() => setEditingChild(selectedChild)}>Edit Child</button>
+            <button className="btn btn-secondary" onClick={() => setEditingChild(selectedChild)}>ערוך ילד</button>
           )}
         </div>
       </div>
       <div className="row">
         <div className="col-md-4">
-          <ChildList children={children} setSelectedChild={setSelectedChild} />
+          <ChildList children={childrenData} setSelectedChild={setSelectedChild} />
         </div>
         <div className="col-md-8">
           {selectedChild && (
