@@ -3,10 +3,9 @@ import { BrowserRouter as Router, Route, Routes,Switch } from 'react-router-dom'
 import Login from './pages/Login';
 import About from './pages/About';
 import Register from './pages/Register';
-import Navbarlist from './Navbarlist';
+import Navbarlist from './tools/Navbarlist';
 import Balloons from './background/ballons';
 import HomePage from './pages/HomePage';
-import Contact from './pages/Contact';
 import SurveyForm from './pages/AIForom';
 import Products from './Products';
 import './App.css';

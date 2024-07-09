@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const InvetationForom = ({ listOfGifts, childName }) => {
-    const [invitation, setInvitation] = useState({ name: childName, place: '', time: '', description: '', list: listOfGifts });
+    const [invitation, setInvitation] = useState({ name: childName, age:'', place: '', time: '', description: '', list: listOfGifts });
     const navigate = useNavigate();
 
     const handleSubmit = (e) => {
@@ -49,6 +49,15 @@ const InvetationForom = ({ listOfGifts, childName }) => {
                                     id="description"
                                     value={invitation.description}
                                     onChange={(e) => setInvitation({ ...invitation, description: e.target.value })}
+                                ></textarea>
+                            </div>
+                            <div className="mb-3">
+                                <label htmlFor="description" className="form-label">Description</label>
+                                <textarea
+                                    className="form-control"
+                                    id="age"
+                                    value={invitation.description}
+                                    onChange={(e) => setInvitation({ ...invitation, age: e.target.value })}
                                 ></textarea>
                             </div>
                             <button type="submit" className="btn btn-primary">Share Invitation</button>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink, Link } from 'react-router-dom';
-import './styles/NavBar.css';
+import '../styles/NavBar.css';
 import { NavDropdown, Nav } from 'react-bootstrap';
 
 const Navbarlist = ({ currentUser, onLogout }) => {
@@ -15,7 +15,7 @@ const Navbarlist = ({ currentUser, onLogout }) => {
           </li>
           <li className="nav-item">
             <NavLink to="/products" className="nav-link" activeClassName="active">
-              חנות
+            מוצרים נבחרים
             </NavLink>
           </li>
           <li className="nav-item">
