@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -8,26 +7,27 @@ import { Collapse } from 'react-bootstrap';
 const HomePage = () => {
   const [open, setOpen] = useState(false);
   return (
-    <div style={{backgroundColor:'transparent'}}>
-    <div className="container">
-    <div className="home-content text-center mb-5">
+    <div style={{ backgroundColor: 'transparent' }}>
+      <div className="container">
+        <div className="home-content text-center mb-5">
+          <h1 className="mb-4">ברוכים הבאים ל</h1>
           <h1 className="mb-4">Welcome to</h1>
           <div className="logo-container mb-4 text-center">
-          <img 
-            src="giftflowlogoclr.png" 
-            alt="Birthday Gifts Logo" 
-            className="logo-image"
-            style={{height: '40vh', width:'40vh'}}
-          />
-        </div>
-          <p >Discover the Perfect Gifts for Your Child with Ease</p>
+            <img 
+              src="giftflowlogoclr.png" 
+              alt="Birthday Gifts Logo" 
+              className="logo-image"
+              style={{ height: '40vh', width: '40vh' }}
+            />
+          </div>
+          <p >גלו את המתנות המושלמות עבור ילדכם בקלות</p>
           <h5>
-            At GiftFlow, we know that nothing is more important than your child’s smile. We understand the challenge of finding the perfect gifts for your child. Our innovative gift-sharing platform uses advanced A.I. to help you create personalized gift lists that make every event more memorable and filled with joy.
+            ב-GiftFlow, אנחנו יודעים שאין דבר יותר חשוב מחיוך הילד שלכם. אנו מבינים את האתגר למצוא את המתנה המושלמת עבור ילדכם. פלטפורמת המתנות המתקדמת שלנו משתמשת בבינה מלאכותית מתקדמת כדי לעזור לכם ליצור רשימות מתנות אישיות שיהפכו כל אירוע ליותר זכור ומלא שמחה.
           </h5>
         </div>
         
         <div className="text-center mt-5">
-          <h3 className="mb-4">Companies with Us</h3>
+          <h3 className="mb-4">חברות עובדים איתנו</h3>
           <div className="moving-bar">
             <div className="moving-bar-inner">
               <img src="ToysRus.png" alt="Company Logo 1" />
@@ -42,7 +42,7 @@ const HomePage = () => {
         <br/>
         <br/>
         <br/>
-        <h3 className="text-center mb-4">How It Works:</h3>
+        <h1 className="text-center mb-4">איך האתר שלנו עובד ?</h1>
         <div className="text-center mb-4">
           <button 
             className="btn btn-primary"
@@ -50,7 +50,7 @@ const HomePage = () => {
             aria-controls="how-it-works-collapse"
             aria-expanded={open}
           >
-            {open ? 'Hide Details' : 'Show Details'}
+            {open ? 'הסתר פרטים' : 'הצג פרטים'}
           </button>
         </div>
 
@@ -61,40 +61,40 @@ const HomePage = () => {
               <div className="col-md-4 mb-4">
                 <div className="card home-content">
                   <div className="card-body">
-                    <h5 className="card-title">Personalized Gift Suggestions</h5>
-                    <p className="card-text">When you sign up, we’ll ask a few questions about your child’s interests and personality. Our advanced A.I. analyzes this information to recommend gifts that your child will love, ensuring every present is a perfect match.</p>
+                    <h5 className="card-title">הצעות מתנה אישיות</h5>
+                    <p className="card-text">כאשר אתם נרשמים, נשאל אתכם כמה שאלות על ענייני העניינים והאישיות של הילד שלכם. הבינה המלאכותית המתקדמת שלנו נותנת המלצות לפי נתונים אלו, ומבטיחה שכל מתנה היא התאמה מושלמת.</p>
                   </div>
                 </div>
               </div>
               <div className="col-md-4 mb-4">
                 <div className="card home-content">
                   <div className="card-body">
-                    <h5 className="card-title">Easy Gift List Management</h5>
-                    <p className="card-text">Create and manage gift lists for each of your children. Edit, add, or remove items as you see fit, keeping the list updated and relevant to your child’s evolving interests.</p>
+                    <h5 className="card-title">ניהול רשימת מתנות פשוט</h5>
+                    <p className="card-text">יצירה וניהול של רשימות מתנות לכל אחד מהילדים שלכם. עריכה, הוספה או הסרת פריטים כפי שתרצו, תוך שמירה על עדכון ורלוונטיות הרשימה לפי העניינים המשתנים של הילד שלכם.</p>
                   </div>
                 </div>
               </div>
               <div className="col-md-4 mb-4">
                 <div className="card home-content">
                   <div className="card-body">
-                    <h5 className="card-title">Share with Friends and Family</h5>
-                    <p className="card-text">Once your list is complete, share it effortlessly with friends, family, and even your child’s classmates through a unique link. This makes it easy for others to see what gifts your child would love.</p>
+                    <h5 className="card-title">שיתוף עם חברים ומשפחה</h5>
+                    <p className="card-text">לאחר שהרשימה שלכם מוכנה, שתפו אותה בקלות עם חברים, משפחה וגם עם חברי הכיתה של הילד שלכם דרך קישור ייחודי. זה יקל על האחרים לראות אילו מתנות הילד שלכם יאהב.</p>
                   </div>
                 </div>
               </div>
               <div className="col-md-4 mb-4">
                 <div className="card home-content">
                   <div className="card-body">
-                    <h5 className="card-title">Event Details at a Glance</h5>
-                    <p className="card-text">When someone opens your shared link, they’ll see all the important event details like the date, time, and any special notes you’ve included. This helps everyone stay informed and makes gift-giving a breeze. They can also add the event to their calendar and receive reminders to prepare in advance.</p>
+                    <h5 className="card-title">פרטי האירוע במבט על פניו</h5>
+                    <p className="card-text">כאשר מישהו פותח את הקישור המשותף שלכם, הם רואים את כל פרטי האירוע החשובים כמו תאריך, שעה וכל ההערות המיוחדות שכללתם. זה עוזר לכולם להישאר מעודכנים ומקל על המתנה.</p>
                   </div>
                 </div>
               </div>
               <div className="col-md-4 mb-4">
                 <div className="card home-content">
                   <div className="card-body">
-                    <h5 className="card-title">Enhanced Gift Matching</h5>
-                    <p className="card-text">If someone knows more details about your child, they can provide this information through the shared link. Our A.I. will use these additional insights to refine its gift recommendations, ensuring an even better match for your child’s preferences.</p>
+                    <h5 className="card-title">התאמת מתנות משופרת</h5>
+                    <p className="card-text">אם מישהו יודע פרטים נוספים על הילד שלכם, הם יכולים לספק את המידע הזה דרך הקישור המשותף. הבינה המלאכותית שלנו תשתמש בתובנות נוספות אלו כדי לשפר את ההמלצות על מתנות, ולוודא התאמה טובה יותר להעדפות הילד שלכם.</p>
                   </div>
                 </div>
               </div>
@@ -102,69 +102,25 @@ const HomePage = () => {
           </div>
         </Collapse>
 
-        <h3 className="text-center mb-4">Why Choose GiftFlow?</h3>
+        <h3 className="text-center mb-4">למה לבחור ב-GiftFlow?</h3>
         <ul className="list-unstyled text-center mx-auto" style={{ maxWidth: "600px" }}>
-          <li className="mb-3"><strong>Tailored for Children:</strong> Our platform is designed specifically for children, ensuring that every gift suggestion is age-appropriate and aligned with their interests.</li>
-          <li className="mb-3"><strong>Multiple Children, One Account:</strong> Manage gift lists for all your children from a single parent account. Easily switch between profiles and keep each list organized and up-to-date.</li>
-          <li className="mb-3"><strong>Convenient and Fun:</strong> Make gift-giving enjoyable and stress-free. With GiftFlow, you can be confident that every gift is something your child will cherish.</li>
+          <li className="mb-3"><strong>מותאם לילדים:</strong> הפלטפורמה שלנו מיועדת במיוחד לילדים, ומבטיחה שכל ההמלצות למתנות יהיו מתאימות לגיל ולענייניו של הילד.</li>
+          <li className="mb-3"><strong>ילדים מרובים, חשבון אחד:</strong> ניהול של רשימות מתנות עבור כל הילדים שלך מתוך חשבון ההורה היחידי. ניהול קל בין הפרופילים ושמירה על עדכון רשימות המתנות עבור ענייניהם המשתנים של הילדים שלך.</li>
+          <li className="mb-3"><strong>נוח וכיף:</strong> גרום להעברת מתנות להיות כיפית וללא סטרס. עם GiftFlow, אתם יכולים להיות בטוחים שכל מתנה היא משהו שהילד שלכם יעריך.</li>
         </ul>
 
         <div className="text-center mt-4">
-        <Link to="/ai-help"><button className="btn btn-primary">Join GiftFlow Today!</button></Link> 
+          <Link to="/ai-help"><button className="btn btn-primary">הצטרפו ל-GiftFlow היום!</button></Link> 
         </div>
       </div>
 
-
-
-
-
-
-
-  <footer className="text-lg-start mt-5" style={{ backgroundColor: 'transparent' , border: 'none',boxShadow:'none'}}>
-    <div className="text-center p-3 " style={{color:' rgb(144, 51, 51) '}}>
-         &copy; 2024 GiftFlow. All rights reserved.
-    </div>
-</footer>
+      <footer className="text-lg-start mt-5" style={{ backgroundColor: 'transparent', border: 'none', boxShadow: 'none' }}>
+        <div className="text-center p-3 " style={{ color: 'rgb(144, 51, 51)' }}>
+          &copy; 2024 GiftFlow. כל הזכויות שמורות.
+        </div>
+      </footer>
     </div>
   );
 };
 
 export default HomePage;
-
-
-
-
-
-
-
-
-// inside the footer, felt no need
-  {/* <div className="container p-4">
-          <div className="row">
-            <div className="col-lg-6 col-md-12 mb-4 mb-md-0">
-              <h5 className="text-uppercase">Contact Us</h5>
-              <p>
-                Email: info@giftflow.com<br />
-                Phone: +1 (800) 123-4567<br />
-                Address: 123 GiftFlow Street, Celebration City, Joyland
-              </p>
-            </div>
-            <div className="col-lg-6 col-md-12 mb-4 mb-md-0">
-              <h5 className="text-uppercase">Follow Us</h5>
-              <ul className="list-unstyled mb-0">
-                <li>
-                  <a href="#!" className="text-dark">Facebook</a>
-                </li>
-                <li>
-                  <a href="#!" className="text-dark">Twitter</a>
-                </li>
-                <li>
-                  <a href="#!" className="text-dark">Instagram</a>
-                </li>
-                <li>
-                  <a href="#!" className="text-dark">LinkedIn</a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div> */}
