@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import ChildList from './ChildList';
+import ChildList from './accountPages/ChildList';
 import QAList from './QAList';
-import AddChildForm from './AddChildForm';
-import EditChildForm from './EditChildForm';
+import AddChildForm from './accountPages/AddChildForm';
+import EditChildForm from './accountPages/EditChildForm';
 
 const QuestionsPage = () => {
   const [children, setChildren] = useState([

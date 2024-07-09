@@ -1,6 +1,6 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import '../styles/GiftList.css'; // تأكد من وجود ملف CSS هنا
+import '../../styles/GiftList.css'; 
 
 const GiftList = ({ gifts, deleteGift, setEditingGift, childName }) => {
   return (

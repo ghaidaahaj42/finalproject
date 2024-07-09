@@ -10,14 +10,15 @@ import Contact from './pages/Contact';
 import SurveyForm from './pages/AIForom';
 import Products from './Products';
 import './App.css';
-import InvetationPage from './pages/InvetationPage';
-import InvetationForom from './pages/InvetationForom'
-import GiftsPage from './pages/GiftsPage';
+import InvetationPage from './pages/InvetationPages/InvetationPage';
+import InvetationForom from './pages/InvetationPages/InvetationForom'
+import GiftsPage from './pages/accountPages/GiftsPage';
 import QuestionsPage from './pages/QuestionsPage';
 
 function App() {
-  const [users, setUsers] = useState([]);
+  const [users, setUsers] = useState([{ email: 'test@gmail.com', password: '123' }]);
   const [currentUser, setCurrentUser] = useState(null);
+
 
   const handleLogin = (username) => {
     setCurrentUser(username);

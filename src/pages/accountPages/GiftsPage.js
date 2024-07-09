@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import '../styles/GiftsPage.css'; // تأكد من وجود ملف CSS هنا
+import '../../styles/GiftsPage.css'; // تأكد من وجود ملف CSS هنا
 import ChildList from './ChildList';
 import GiftList from './GiftList';
 import AddGiftForm from './AddGiftForm';
