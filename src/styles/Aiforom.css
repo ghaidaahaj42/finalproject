@@ -7,6 +7,7 @@
   justify-content: center;
   align-items: center;
 
+  
 }
 
 .survey-card {
@@ -29,6 +30,27 @@
 }
 
 .survey-card .progress-bar {
-  height: 20px;
+  height: 20;
   border-radius: 5px;
 }
+
+h3{
+  color: #ff69b4;
+}
+#questions{
+  height: 100%;
+  width: 80%;
+
+}
+
+#btn{
+
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+  border: none;
+  
+}
+
+#answers{
+  height: 70%;
+}
+

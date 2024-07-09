@@ -1,24 +1,19 @@
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Row, Col, Card, Button, ProgressBar } from 'react-bootstrap';
-import { FormControlLabel, RadioGroup, Radio, FormControl } from '@mui/material';
+import { FormControlLabel, RadioGroup, Radio, FormControl ,TextareaAutosize} from '@mui/material';
+import Textarea from '@mui/joy/Textarea';
 import { BsArrowLeft, BsArrowRight } from 'react-icons/bs';
 import '../styles/Aiforom.css';
 const questions = [
   {
     id: 0,
-    title: "מהם תחומי התחביבים האהובים על ילדך? (בחר אחד או יותר)",
-    options: [
-      { value: "ספורט", label: "ספורט" },
-      { value: "רישומים ואמנות", label: "רישומים ואמנות" },
-      { value: "מדע וטכנולוגיה", label: "מדע וטכנולוגיה" },
-      { value: "מוזיקה", label: "מוזיקה" },
-      { value: "קריאה וספרים", label: "קריאה וספרים" }
-    ]
+    title: "מה הגיל של הילד.ה ?",
+    options: []
   },
   {
     id: 1,
-    title: "אילו סוגי משחקים הוא הכי אוהב לשחק? (בחר אחד או יותר)",
+    title: "אילו סוגי משחקים הוא הכי אוהב לשחק? ",
     options: [
       { value: "משחקי קופסה", label: "משחקי קופסה" },
       { value: "משחקי חוץ", label: "משחקי חוץ" },
@@ -28,7 +23,7 @@ const questions = [
   },
   {
     id: 2,
-    title: "מהם הסרטים או הסדרות האהובים על ילדך? (בחר אחד או יותר)",
+    title: "מהם הסרטים או הסדרות האהובים על ילדך?",
     options: [
       { value: "סרטי אנימציה", label: "סרטי אנימציה" },
       { value: "סדרות פעולה", label: "סדרות פעולה" },
@@ -38,7 +33,7 @@ const questions = [
   },
   {
     id: 3,
-    title: "איך הוא אוהב לבלות את הזמן בחופשות או בסופי השבוע? (בחר אחד או יותר)",
+    title: "איך הוא אוהב לבלות את הזמן בחופשות או בסופי השבוע? ",
     options: [
       { value: "בילוי בחוץ כמו טיולים או ספורט", label: "בילוי בחוץ כמו טיולים או ספורט" },
       { value: "יצירה ואומנות", label: "יצירה ואומנות" },
@@ -48,7 +43,7 @@ const questions = [
   },
   {
     id: 4,
-    title: "מה הם סוגי הספרים שהוא אוהב לקרוא? (בחר אחד או יותר)",
+    title: "מה הם סוגי הספרים שהוא אוהב לקרוא?",
     options: [
       { value: "פנטזיה", label: "פנטזיה" },
       { value: "מדע בדיוני", label: "מדע בדיוני" },
@@ -58,65 +53,70 @@ const questions = [
   },
   {
     id: 5,
-    title: "מהם הדמויות או הגיבורים שהוא הכי אוהב? בחר את כל האפשרויות המתאימות:",
-    options: [
-      { value: "גיבורי על", label: "גיבורי על" },
-      { value: "דמויות אנימציה", label: "דמויות אנימציה" },
-      { value: "דמויות היסטוריות", label: "דמויות היסטוריות" },
-      { value: "דמויות קומיקס", label: "דמויות קומיקס" }
-    ]
+    title: "משהו שחשוב לנו לדעת ?",
+    options: []
   },
-  {
-    id: 6,
-    title: "מהם המשחקים או הצעצועים שהוא הכי מחכה לקבל? בחר את כל האפשרויות המתאימות:",
-    options: [
-      { value: "צעצועי מותג מסוים (לדוגמה, LEGO או Barbie)", label: "צעצועי מותג מסוים (לדוגמה, LEGO או Barbie)" },
-      { value: "צעצועי בנייה ויצירה", label: "צעצועי בנייה ויצירה" },
-      { value: "צעצועים חדשניים טכנולוגיים", label: "צעצועים חדשניים טכנולוגיים" },
-      { value: "כלי נגינה או צעצועים מוזיקליים", label: "כלי נגינה או צעצועים מוזיקליים" }
-    ]
-  },
-  {
-    id: 7,
-    title: "איזו סוגת מוסיקה היא האהובה על ילדך? בחר את כל האפשרויות המתאימות:",
-    options: [
-      { value: "רוק או פופ", label: "רוק או פופ" },
-      { value: "קלאסי או ג'אז", label: "קלאסי או ג'אז" },
-      { value: "ראפ או R&B", label: "ראפ או R&B" },
-      { value: "מוסיקה ישראלית או עממית", label: "מוסיקה ישראלית או עממית" },
-      { value: "לא רלוונטי", label: "לא רלוונטי" }
-    ]
-  },
-  {
-    id: 8,
-    title: "מה הם הצבעים הכי אהובים עליו? בחר את כל האפשרויות המתאימות:",
-    options: [
-      { value: "אדום", label: "אדום" },
-      { value: "כחול", label: "כחול" },
-      { value: "ירוק", label: "ירוק" },
-      { value: "צהוב", label: "צהוב" }
-    ]
-  },
-  {
-    id: 9,
-    title: "אילו פעילויות הן הכי משמחות אותו לעשות? בחר את כל האפשרויות המתאימות:",
-    options: [
-      { value: "בישול ואפייה", label: "בישול ואפייה" },
-      { value: "ביצוע אומנותית", label: "ביצוע אומנותית" },
-      { value: "שחקנות והצגות", label: "שחקנות והצגות" },
-      { value: "ספורט ופעילויות חוץ", label: "ספורט ופעילויות חוץ" }
-    ]
-  },
-  {
-    id: 10,
-    title: "אילו חיות הן הכי אהובות על ילדך? בחר את כל האפשרויות המתאימות:",
-    options: [
-      { value: "כלבים", label: "כלבים" },
-      { value: "חתולים", label: "חתולים" },
-      { value: "דגים ומעיים", label: "דגים ומעיים" },
-      { value: "צפרדעים וברכישים", label: "צפרדעים וברכישים" }
-    ]
-  }
+//   {
+//     id: 5,
+//     title: "מהם הדמויות או הגיבורים שהוא הכי אוהב? בחר את כל האפשרויות המתאימות:",
+//     options: [
+//       { value: "גיבורי על", label: "גיבורי על" },
+//       { value: "דמויות אנימציה", label: "דמויות אנימציה" },
+//       { value: "דמויות היסטוריות", label: "דמויות היסטוריות" },
+//       { value: "דמויות קומיקס", label: "דמויות קומיקס" }
+//     ]
+//   },
+//   {
+//     id: 6,
+//     title: "מהם המשחקים או הצעצועים שהוא הכי מחכה לקבל? בחר את כל האפשרויות המתאימות:",
+//     options: [
+//       { value: "צעצועי מותג מסוים (לדוגמה, LEGO או Barbie)", label: "צעצועי מותג מסוים (לדוגמה, LEGO או Barbie)" },
+//       { value: "צעצועי בנייה ויצירה", label: "צעצועי בנייה ויצירה" },
+//       { value: "צעצועים חדשניים טכנולוגיים", label: "צעצועים חדשניים טכנולוגיים" },
+//       { value: "כלי נגינה או צעצועים מוזיקליים", label: "כלי נגינה או צעצועים מוזיקליים" }
+//     ]
+//   },
+//   {
+//     id: 7,
+//     title: "איזו סוגת מוסיקה היא האהובה על ילדך? בחר את כל האפשרויות המתאימות:",
+//     options: [
+//       { value: "רוק או פופ", label: "רוק או פופ" },
+//       { value: "קלאסי או ג'אז", label: "קלאסי או ג'אז" },
+//       { value: "ראפ או R&B", label: "ראפ או R&B" },
+//       { value: "מוסיקה ישראלית או עממית", label: "מוסיקה ישראלית או עממית" },
+//       { value: "לא רלוונטי", label: "לא רלוונטי" }
+//     ]
+//   },
+//   {
+//     id: 8,
+//     title: "מה הם הצבעים הכי אהובים עליו? בחר את כל האפשרויות המתאימות:",
+//     options: [
+//       { value: "אדום", label: "אדום" },
+//       { value: "כחול", label: "כחול" },
+//       { value: "ירוק", label: "ירוק" },
+//       { value: "צהוב", label: "צהוב" }
+//     ]
+//   },
+//   {
+//     id: 9,
+//     title: "אילו פעילויות הן הכי משמחות אותו לעשות? בחר את כל האפשרויות המתאימות:",
+//     options: [
+//       { value: "בישול ואפייה", label: "בישול ואפייה" },
+//       { value: "ביצוע אומנותית", label: "ביצוע אומנותית" },
+//       { value: "שחקנות והצגות", label: "שחקנות והצגות" },
+//       { value: "ספורט ופעילויות חוץ", label: "ספורט ופעילויות חוץ" }
+//     ]
+//   },
+//   {
+//     id: 10,
+//     title: "אילו חיות הן הכי אהובות על ילדך? בחר את כל האפשרויות המתאימות:",
+//     options: [
+//       { value: "כלבים", label: "כלבים" },
+//       { value: "חתולים", label: "חתולים" },
+//       { value: "דגים ומעיים", label: "דגים ומעיים" },
+//       { value: "צפרדעים וברכישים", label: "צפרדעים וברכישים" }
+//     ]
+//   }
 ];
 
 
@@ -154,30 +154,46 @@ function SurveyForm() {
               </div>
             ) : (
 
-              <div className="card-body">
-                                <ProgressBar striped variant="info"  now={answeredCount} max={questions.length} label={`${answeredCount} מתוך ${questions.length} שאלות`} className="mb-3" />
+<div className="container text-center" id="questions">
+<ProgressBar striped variant="info"  now={answeredCount} max={questions.length} label={`${answeredCount} מתוך ${questions.length} שאלות`} className="mb-3" />
 
-              <div className="container survey-card">
-                <h2>{questions[step].title}</h2>
-                <FormControl component="fieldset">
-                  <RadioGroup name={`question-${questions[step].id}`}>
-                    {questions[step].options.map(option => (
-                      <FormControlLabel key={option.value} value={option.value} control={<Radio />} label={option.label} />
-                    ))}
-                  </RadioGroup>
-                </FormControl>
+
+         <div className="container text-center " id="questions">
+
+         
+                <h3>{questions[step].title}</h3>
+     <FormControl component="fieldset" className="question-container">
+  {questions[step].options.length > 0 ? (
+    <RadioGroup name={`question-${questions[step].id}`} className="options-group">
+      {questions[step].options.map(option => (
+        <FormControlLabel key={option.value} value={option.value} control={<Radio />} label={option.label} />
+      ))}
+    </RadioGroup>
+  ) : (
+    <Textarea
+      color="primary"
+      disabled={false}
+      minRows={2}
+      size="sm"
+      variant="outlined"
+    />
+  )}
+</FormControl>
+
+
+
                 <div className="mt-4 d-flex justify-content-between">
                 {step >=0 && (
-                    <Button variant="secondary" onClick={handlePrev}>
+                    <Button variant="secondary" id="btn" onClick={handlePrev}>
                       <BsArrowRight />
                     </Button>
                   )}
                   {step < questions.length - 1 ? (
-                    <Button variant="primary" onClick={handleNext}>
+                    <Button variant="primary" id="btn" onClick={handleNext}>
                       <BsArrowLeft />
                     </Button>
                   ) : (
-                    <Button variant="success">Finish</Button>
+                    <Button variant="success" id="btn">Finish</Button>
                   )}
 
                 </div>
