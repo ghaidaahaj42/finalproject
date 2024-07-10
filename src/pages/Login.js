@@ -13,7 +13,7 @@ const Login = ({ users, onLogin }) => {
     const user = users.find(user => user.email === email && user.password === password);
     if (user) {
       onLogin(user.email);
-      navigate('/');
+      navigate('/questions-page');
     } else {
       setError('Invalid username or password');
     }
