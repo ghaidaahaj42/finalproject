@@ -5,8 +5,10 @@ const AddChildForm = ({ addChild, setAddingChild }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (name.trim() !== '') {
-      addChild({ name, questions: [  { question: 'What is your favorite color?', answer: '' },
-        { question: 'What is your favorite toy?', answer: '' },{ question: 'What is your favorite color?', answer: '' }],gifts:[{
+      addChild({ name, questions: [  { question: 'מה הגיל של הילד?', answer: '' },
+        { question: 'אילו סוגי משחקים הוא הכי אוהב לשחק?', answer: '' },{ question: 'מהם הסרטים או הסדרות האהובים עך ילדך?', answer: '' }
+        ,{ question: 'איך הוא אוהב לבלות את הזמן בחופשות או בסופי השבוע?', answer: '' },{ question: 'מה הם סוגי הספרים שהוא אוהב לקרוא?', answer: '' }
+        ,{ question: 'עוד משהו להוסיף?', answer: '' }],gifts:[{
           id: 1,
           image: 'https://toysrus.co.il/media/catalog/product/cache/55a044f927b05bedf296cf15120d7cf4/6/9/693677_1.jpg',
           name: 'הרמז צעיר',
