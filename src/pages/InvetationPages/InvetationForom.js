@@ -26,13 +26,13 @@ const InvitationForm = ({ listOfGifts, childName }) => {
             <div className="modal-dialog">
                 <div className="modal-content">
                     <div className="modal-header">
-                        <h5 className="modal-title">Invitation for {childName}</h5>
+                        <h5 className="modal-title">הזמנה עבור {childName}</h5>
                         <button type="button" className="btn-close" onClick={() => navigate('/')}></button>
                     </div>
                     <div className="modal-body">
                         <form onSubmit={handleSubmit}>
                             <div className="mb-3">
-                                <label htmlFor="age" className="form-label">Age</label>
+                                <label htmlFor="age" className="form-label">גיל</label>
                                 <input
                                     type="text"
                                     className="form-control"
@@ -42,7 +42,7 @@ const InvitationForm = ({ listOfGifts, childName }) => {
                                 />
                             </div>
                             <div className="mb-3">
-                                <label htmlFor="place" className="form-label">Place</label>
+                                <label htmlFor="place" className="form-label">מיקום</label>
                                 <input
                                     type="text"
                                     className="form-control"
@@ -53,18 +53,18 @@ const InvitationForm = ({ listOfGifts, childName }) => {
                                 />
                             </div>
                             <div className="mb-3">
-                                <label className="form-label">Date</label><br />
+                                <label className="form-label">תאריך</label><br />
                                 <DatePicker
                                     selected={invitation.date}
                                     onChange={(date) => setInvitation({ ...invitation, date })}
                                     dateFormat="yyyy-MM-dd"
                                     className="form-control"
-                                    placeholderText="Select Date"
+                                    placeholderText="בחר תאריך"
                                     required
                                 />
                             </div>
                             <div className="mb-3">
-                                <label htmlFor="time" className="form-label">Time</label>
+                                <label htmlFor="time" className="form-label">שעה</label>
                                 <input
                                     type="text"
                                     className="form-control"
@@ -76,7 +76,7 @@ const InvitationForm = ({ listOfGifts, childName }) => {
                                 />
                             </div>
                             <div className="mb-3">
-                                <label htmlFor="description" className="form-label">Description (Optional)</label>
+                                <label htmlFor="description" className="form-label">תיאור (אופציונלי)</label>
                                 <textarea
                                     className="form-control"
                                     id="description"
@@ -84,7 +84,7 @@ const InvitationForm = ({ listOfGifts, childName }) => {
                                     onChange={(e) => setInvitation({ ...invitation, description: e.target.value })}
                                 ></textarea>
                             </div>
-                            <button type="submit" className="btn btn-primary">Share Invitation</button>
+                            <button type="submit" className="btn btn-primary">שיתוף ההזמנה</button>
                         </form>
                     </div>
                 </div>

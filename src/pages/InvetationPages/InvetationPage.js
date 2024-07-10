@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 import './InvitationPage.css'; // Ensure the path to your CSS file is correct
 import DatePicker from 'react-datepicker'; // Import react-datepicker
 import 'react-datepicker/dist/react-datepicker.css'; // Import react-datepicker styles
-
+import GiftList from '../accountPages/GiftList';
 const InvitationPage = () => {
     const location = useLocation();
     const { name, age, place, time, description, list } = location.state || { name: "", age: '', place: '', time: '', description: '', list: [] };
@@ -26,12 +26,14 @@ const InvitationPage = () => {
 
                     {list && list.length > 0 && (
                         <div>
+                            
                             <ul>
                                 {list.map((item, index) => (
+                                    
                                     <li key={index}>
-                                        <p><strong>Name:</strong> {item.name}</p>
-                                        <p><strong>Price:</strong> {item.price}</p>
-                                        <p><strong>Description:</strong> {item.description}</p>
+                                        <p><strong>שם:</strong> {item.name}</p>
+                                        <p><strong>מחיר:</strong> {item.price}</p>
+                                        <p><strong>תיאור:</strong> {item.description}</p>
                                         <img src={item.image} alt={item.name} style={{ maxWidth: '100px', maxHeight: '100px' }} />
                                     </li>
                                 ))}
