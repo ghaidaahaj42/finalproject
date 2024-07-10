@@ -8,7 +8,7 @@ const InvitationForm = ({ listOfGifts, childName }) => {
         name: childName,
         age: '',
         place: '',
-        date: null,
+        mydate: null,
         time: '',
         description: '',
         list: listOfGifts
@@ -56,7 +56,7 @@ const InvitationForm = ({ listOfGifts, childName }) => {
                                 <label className="form-label">תאריך</label><br />
                                 <DatePicker
                                     selected={invitation.date}
-                                    onChange={(date) => setInvitation({ ...invitation, date })}
+                                    onChange={(date) => setInvitation({ ...invitation,mydate: date })}
                                     dateFormat="yyyy-MM-dd"
                                     className="form-control"
                                     placeholderText="בחר תאריך"
