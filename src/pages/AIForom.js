@@ -11,7 +11,7 @@ import ProductCard from '../Product'
 const questions = [
   {
     id: 0,
-    title: "מה הגיל של הילד.ה ?",
+    title: "What is the age of the child?",
     options: [
       { value: "3-6", label: "3-6" },
       { value: "6-10", label: "6-10" },
@@ -20,48 +20,48 @@ const questions = [
     ]
   },
   {
-    id: 1,
-    title: "אילו סוגי משחקים הוא הכי אוהב לשחק? ",
-    options: [
-      { value: "משחקי קופסה", label: "משחקי קופסה" },
-      { value: "משחקי חוץ", label: "משחקי חוץ" },
-      { value: "משחקי טכנולוגיה (כמו קונסולות משחק או משחקי מחשב)", label: "משחקי טכנולוגיה (כמו קונסולות משחק או משחקי מחשב)" },
-      { value: "בניית פאזלים ומבחני אתגר", label: "בניית פאזלים ומבחני אתגר" }
+    "id": 1,
+    "title": "What kinds of games does he like to play the most?",
+    "options": [
+      { value: "Board games", label: "Board games" },
+      { value: "Outdoor games", label: "Outdoor games" },
+      { value: "Technology games (such as game consoles or computer games)", label: "Technology games (such as game consoles or computer games)" },
+      { value: "Puzzle building and challenge tests", label: "Puzzle building and challenge tests" }
     ]
   },
   {
     id: 2,
-    title: "מהם הסרטים או הסדרות האהובים על ילדך?",
+    title: "What are your child's favorite movies or series?",
     options: [
-      { value: "סרטי אנימציה", label: "סרטי אנימציה" },
-      { value: "סדרות פעולה", label: "סדרות פעולה" },
-      { value: "דרמות", label: "דרמות" },
-      { value: "קומדיות", label: "קומדיות" }
+      { value: "Animated movies", label: "Animated movies" },
+      { value: "Action series", label: "Action series" },
+      { value: "Dramas", label: "Dramas" },
+      { value: "Comedies", label: "Comedies" }
     ]
   },
   {
     id: 3,
-    title: "איך הוא אוהב לבלות את הזמן בחופשות או בסופי השבוע? ",
+    title: "How does he like to spend time during vacations or on weekends?",
     options: [
-      { value: "בילוי בחוץ כמו טיולים או ספורט", label: "בילוי בחוץ כמו טיולים או ספורט" },
-      { value: "יצירה ואומנות", label: "יצירה ואומנות" },
-      { value: "משחקים ופעילויות ביתיות", label: "משחקים ופעילויות ביתיות" },
-      { value: "צפייה בסרטים או סדרות ביתיות", label: "צפייה בסרטים או סדרות ביתיות" }
+      { value: "Outdoor activities like hiking or sports", label: "Outdoor activities like hiking or sports" },
+      { value: "Arts and crafts", label: "Arts and crafts" },
+      { value: "Indoor games and activities", label: "Indoor games and activities" },
+      { value: "Watching movies or TV series at home", label: "Watching movies or TV series at home" }
     ]
   },
   {
     id: 4,
-    title: "מה הם סוגי הספרים שהוא אוהב לקרוא?",
+    title: "What types of books does he like to read?",
     options: [
-      { value: "פנטזיה", label: "פנטזיה" },
-      { value: "מדע בדיוני", label: "מדע בדיוני" },
-      { value: "ספרי מתח והרפתקאות", label: "ספרי מתח והרפתקאות" },
-      { value: "ספרי למידה וחונך", label: "ספרי למידה וחונך" }
+      { value: "Fantasy", label: "Fantasy" },
+      { value: "Science fiction", label: "Science fiction" },
+      { value: "Thriller and adventure books", label: "Thriller and adventure books" },
+      { value: "Educational and mentoring books", label: "Educational and mentoring books" }
     ]
   },
   {
     id: 5,
-    title: "משהו שחשוב לנו לדעת ?",
+    title: "Is there something important for us to know?",
     options: []
   },
 //   {
@@ -167,7 +167,7 @@ function SurveyForm() {
             {isFinished ? (
                <div className="container">
         
-      <h1> לפי התשובות שלך אנחנו מציעים לך לקנות :</h1>
+      <h1>According to your answers, we suggest you to buy:</h1>
       <div className="card-body">
       <Grid style={{backgroundColor:'transparent'}} container spacing={3}>
             {myProducts.map((product) => (
@@ -187,14 +187,15 @@ function SurveyForm() {
             ) : (
               step === -1 ? (
                 <div className="container text-center">
-                  <h1>בואו קצת נקיר את הילד שמחפשים בשבילו מתנה </h1>
-                  <p>.אנחנו נציג לפניכם 6 שאלות שאתם חייבים לענות עליהם, כדי שהבינה מלאכותית תעזור לכם היטב </p>
-                  <p> נשמע לכם סבבה ? </p>
-                  <Button variant="primary" onClick={handleNext}>בואו נתחיל</Button>
+                <h1>Let's find the perfect gift for the child we're looking for</h1>
+                <p>We will present you with 6 questions that you must answer so that artificial intelligence can assist you well.</p>
+                <p>Sound good to you?</p>
+                <Button variant="primary" onClick={handleNext}>Let's get started</Button>
+
                 </div>
               ) : (
                 <div className="container text-center" id="questions">
-                  <ProgressBar striped variant="info" now={answeredCount} max={questions.length} label={`${answeredCount} מתוך ${questions.length} שאלות`} className="mb-3" />
+                  <ProgressBar striped variant="info" now={answeredCount} max={questions.length} label={`${answeredCount} from ${questions.length} questions`} className="mb-3" />
                   <div className="container text-center" id="questions">
                     <h3>{questions[step].title}</h3>
                     <FormControl component="fieldset" className="question-container">

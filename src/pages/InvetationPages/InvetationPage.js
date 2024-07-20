@@ -17,11 +17,11 @@ const InvitationPage = () => {
         <div className="container">
             <div className="home-content text-center mb-5" style={{ backgroundColor: 'transparent' }}>
                 <div className="card-body">
-                    <h1>הזמנה למסיבת יום הולדת 🎉</h1>
-                    <h4>אתם מוזמנים לחגוג איתנו את יום הולדתו ה-{age} של {name}!</h4>
-                    <h4>📅 תאריך ושעה: <strong>{time} {DateArr[0]} {DateArr[2]} {DateArr[1]}  </strong></h4>
-                    <h4>📍 מקום: <strong>{place}</strong></h4>
-                    <h4>בואו לשמוח, לרקוד ולהפתיע את {name} במתנות שהוא באמת אוהב!</h4>
+                <h1>Birthday Party Invitation 🎉</h1>
+                <h4>You are invited to celebrate {name}'s {age}th birthday!</h4>
+                <h4>📅 Date and Time: <strong>{time} {DateArr[0]} {DateArr[2]} {DateArr[1]}</strong></h4>
+                <h4>📍 Location: <strong>{place}</strong></h4>
+                <h4>Come rejoice, dance, and surprise {name} with gifts he truly loves!</h4>
                     {description && <p><strong>Additional Details:</strong> {description}</p>}
 
                     {list && list.length > 0 && (
@@ -29,9 +29,9 @@ const InvitationPage = () => {
                             <ul className="item-list">
                                 {list.map((item, index) => (
                                     <li key={index} className="item">
-                                        <p><strong>שם:</strong> {item.name}</p>
-                                        <p><strong>מחיר:</strong> {item.price}</p>
-                                        <p><strong>תיאור:</strong> {item.description}</p>
+                                        <p><strong>Name: </strong> {item.name}</p>
+                                        <p><strong>Price: </strong> {item.price}</p>
+                                        <p><strong>Description: </strong> {item.description}</p>
                                         <img src={item.image} alt={item.name} style={{ maxWidth: '100px', maxHeight: '100px' }} />
                                     </li>
                                 ))}

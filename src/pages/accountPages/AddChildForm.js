@@ -5,39 +5,39 @@ const AddChildForm = ({ addChild, setAddingChild }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (name.trim() !== '') {
-      addChild({ name, questions: [  { question: 'מה הגיל של הילד?', answer: '' },
-        { question: 'אילו סוגי משחקים הוא הכי אוהב לשחק?', answer: '' },{ question: 'מהם הסרטים או הסדרות האהובים עך ילדך?', answer: '' }
-        ,{ question: 'איך הוא אוהב לבלות את הזמן בחופשות או בסופי השבוע?', answer: '' },{ question: 'מה הם סוגי הספרים שהוא אוהב לקרוא?', answer: '' }
-        ,{ question: 'עוד משהו להוסיף?', answer: '' }],gifts:[{
+      addChild({ name, questions: [  { question: 'What is the age of the child?', answer: '' },
+        { question: 'What kinds of games does he like to play the most?', answer: '' },{ question: "What are your child's favorite movies or series?", answer: '' }
+        ,{ question: 'How does he like to spend time during vacations or on weekends?', answer: '' },{ question: 'What types of books does he like to read?', answer: '' }
+        ,{ question: 'Is there something important for us to know?', answer: '' }],gifts:[{
           id: 1,
           image: 'https://toysrus.co.il/media/catalog/product/cache/55a044f927b05bedf296cf15120d7cf4/6/9/693677_1.jpg',
-          name: 'הרמז צעיר',
+          name: 'Hermiz',
           price: '80',
-          description: 'משחק קופסה בפתרון תעלומה'
+          description: 'box game'
         },{
           id:2,
           image: 'https://toysrus.co.il/media/catalog/product/cache/55a044f927b05bedf296cf15120d7cf4/1/7/17450_1.jpg',
-          name: 'מונופול צעיר',
+          name: 'monopoly',
           price: '99',
-          description: 'משחקי חברה'
+          description: 'Social Games'
         },{
           id: 3,
           image: 'https://itsplaytime.co.il/wp-content/uploads/2020/03/IMG_4758.jpg',
-          name: 'לגו',
+          name: 'Lego',
           price: '30',
-          description: 'משחקי לגו'
+          description: 'Lego Games'
         },{
           id:4,
           image: 'https://www.kodkod.co.il/images/itempics/1341.jpg',
-          name: 'טליסמן',
+          name: 'Talesman',
           price: '120',
-          description: 'משחקי חברה'
+          description: 'Social Games'
         },{
           id: 5,
           image: 'https://th.bing.com/th/id/OIP.00_yuNxck1mqMzXxnQhTaQHaHa?rs=1&pid=ImgDetMain',
-          name: 'אומנות הרקמה',
+          name: 'Art',
           price: '80',
-          description: 'משחק יצירה'
+          description: 'Art Games'
         }] });
         
         
@@ -47,10 +47,10 @@ const AddChildForm = ({ addChild, setAddingChild }) => {
 
   return (
     <div className="add-child-form">
-      <h2>הוספת ילד</h2>
+      <h2>Add Child</h2>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
-          <label>שם הילד</label>
+          <label>Child Name</label>
           <input 
             type="text" 
             className="form-control" 
@@ -58,8 +58,8 @@ const AddChildForm = ({ addChild, setAddingChild }) => {
             onChange={(e) => setName(e.target.value)} 
           />
         </div>
-        <button type="submit" className="btn btn-primary">הוספת ילד</button>
-        <button type="button" className="btn btn-secondary" onClick={() => setAddingChild(false)}>ביטול</button>
+        <button type="submit" className="btn btn-primary">Add Child</button>
+        <button type="button" className="btn btn-secondary" onClick={() => setAddingChild(false)}>Cancel</button>
       </form>
     </div>
   );

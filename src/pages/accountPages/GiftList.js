@@ -14,7 +14,7 @@ const GiftList = ({ gifts, deleteGift, setEditingGift, childName }) => {
             <p className="card-text">{gift.description}</p>
             <div className="gift-actions">
               
-              <button className="btn btn-danger" onClick={() => deleteGift(childName, gift.id)}>מחק</button>
+              <button className="btn btn-danger" onClick={() => deleteGift(childName, gift.id)}>Delete</button>
             </div>
           </div>
         </div>

@@ -18,10 +18,10 @@ const EditChildForm = ({ child, updateChild, setEditingChild, deleteChild }) => 
 
   return (
     <div className="edit-child-form">
-      <h2>ערוך ילד</h2>
+      <h2>Edit Child</h2>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
-          <label>שם הילד</label>
+          <label>Child Name</label>
           <input 
             type="text" 
             className="form-control" 
@@ -29,9 +29,9 @@ const EditChildForm = ({ child, updateChild, setEditingChild, deleteChild }) => 
             onChange={(e) => setName(e.target.value)} 
           />
         </div>
-        <button type="submit" className="btn btn-primary">שמור שינויים</button>
-        <button type="button" className="btn btn-danger" onClick={handleDelete}>מחק ילד</button>
-        <button type="button" className="btn btn-secondary" onClick={() => setEditingChild(null)}>ביטול</button>
+        <button type="submit" className="btn btn-primary">Save Changes</button>
+        <button type="button" className="btn btn-danger" onClick={handleDelete}>Delete Child</button>
+        <button type="button" className="btn btn-secondary" onClick={() => setEditingChild(null)}>Cancel</button>
       </form>
     </div>
   );

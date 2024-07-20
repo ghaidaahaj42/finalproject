@@ -7,7 +7,6 @@
   height: 100vh;
   overflow: hidden;
   z-index: -1; /* Ensure balloons are behind other content */
-  background: linear-gradient(to bottom, #87ceeb, #f0e68c); /* Fallback gradient */
 }
 
 .balloon {
