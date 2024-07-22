@@ -1,152 +1,108 @@
-/* تحسين تنسيق الصفحة العامة */
 .gifts-page {
-  font-family: 'Arial', sans-serif;
-  color: #333;
+  padding: 20px;
+  min-height: 100vh;
 }
 
-
-.gifts-page h1 {
-  color: #ff69b4;
-  font-family: 'Comic Sans MS', cursive, sans-serif;
+.page-title {
+  color: #1a1a1a; 
+  text-align: center;
   margin-bottom: 20px;
 }
 
-
-/* تحسين تنسيق قائمة الأطفال */
-.child-list {
-  list-style-type: none;
-  padding: 0;
+.page-content {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
 }
 
-.child-list li {
-  padding: 10px;
-  margin-bottom: 10px;
-  background-color: #f1f1f1;
-  border-radius: 5px;
+.child-list {
+  flex: 1;
+  border: 1px solid #4a4a4a38;
+  border-radius: 20px;
+  padding: 20px;
+}
+
+.gift-section {
+  flex: 2;
+  border: 1px solid #4a4a4a38;
+  border-radius: 20px;
+  padding: 20px;
+}
+
+.gift-section .gift{
+  margin: auto;
+}
+
+.btn {
+  padding: 15px 30px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 20px;
+  background-color: #ff92ad;
+  color: #000;
   cursor: pointer;
 }
 
-.child-list li:hover {
-  background-color: #e9e9e9;
+.btn:hover {
+  background-color: #eb81cb;
 }
 
-/* تحسين تنسيق قائمة الهدايا */
-.gift-list-item {
+.view-switcher {
   display: flex;
-  align-items: center;
-  padding: 10px;
-  border-bottom: 1px solid #ddd;
-  background-color: #ffffff;
-  border-radius: 5px;
-  margin-bottom: 10px;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  justify-content: space-between;
+  margin-bottom: 20px;
 }
 
-.gift-list-item img {
-  width: 80px;
-  height: 80px;
-  margin-right: 20px;
-  border-radius: 5px;
-}
-
-.gift-list-item .gift-details {
-  flex-grow: 1;
-}
-
-.gift-list-item .gift-details strong {
-  font-size: 1.2em;
-  display: block;
-}
-
-.gift-list-item .gift-details p {
-  margin: 5px 0;
-}
-
-.gift-list-item .gift-actions {
-  display: flex;
-  gap: 10px;
-}
-
-.gift-list-item .gift-actions button {
-  min-width: 80px;
-}
-
-/* تحسين تنسيق الأزرار */
-
-.btn-secondary {
-  background-color: #6c757d;
-  border-color: #6c757d;
-}
-
-.btn-secondary:hover {
-  background-color: #5a6268;
-  border-color: #545b62;
-}
-
-.btn-warning {
-  background-color: #ffc107;
-  border-color: #ffc107;
-}
-
-.btn-warning:hover {
-  background-color: #ffca2c;
-  border-color: #ffc720;
-}
-
-.btn-danger {
-  background-color: #dc3545;
-  border-color: #dc3545;
-}
-
-.btn-danger:hover {
-  background-color: #e4606d;
-  border-color: #e4606d;
-}
-
-/* تحسين تنسيق النموذج */
-.modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
+.invite-section {
   display: flex;
   justify-content: center;
+  margin-top: 20px;
+}
+
+.invite-btn {
+  margin: 10px auto;
+  cursor: pointer;
+  padding: 15px 30px;
+  font-size: 1.1rem;
+  border: none;
+  outline: none;
+  border-radius: 20px;
+  background-color: #8fb6ff; 
+  color: #fff;
+}
+
+.invite-btn:hover {
+  background-color: #3a6cf0;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5); 
+  display: flex;
   align-items: center;
+  justify-content: center;
+  z-index: 1000;
 }
 
 .modal-content {
-  background: white;
+  background-color: #ffffff; 
+  border-radius: 20px;
   padding: 20px;
-  border-radius: 5px;
-  width: 500px;
-  max-width: 90%;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-}
-
-.modal-content h2 {
-  margin-top: 0;
-}
-
-.form-group {
-  margin-bottom: 15px;
-}
-
-.form-group label {
-  display: block;
-  margin-bottom: 5px;
-}
-
-.form-group input,
-.form-group textarea {
+  min-width: 450px;
   width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  box-sizing: border-box;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  position: relative;
 }
 
-.form-group textarea {
-  resize: vertical;
+@media only screen and (max-width: 1160px) {
+
+  .page-content{
+    flex-direction: column;
+  }
+
 }

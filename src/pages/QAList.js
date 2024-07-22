@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
+import '../styles/qalist.css';
 
 const QAList = ({ questions, updateAnswer, childName }) => {
   const [tempAnswers, setTempAnswers] = useState(() => {
-    // تحميل الإجابات المخزنة في localStorage إذا وُجدت
     const savedAnswers = localStorage.getItem(childName + 'Answers');
     return savedAnswers ? JSON.parse(savedAnswers) : questions.reduce((acc, question) => {
       acc[question.question] = question.answer || '';
@@ -10,7 +10,6 @@ const QAList = ({ questions, updateAnswer, childName }) => {
     }, {});
   });
 
-  // استخدام useEffect لتحديث localStorage فقط عند تغيير الإجابات المؤقتة
   useEffect(() => {
     localStorage.setItem(childName + 'Answers', JSON.stringify(tempAnswers));
   }, [tempAnswers, childName]);
@@ -21,32 +20,34 @@ const QAList = ({ questions, updateAnswer, childName }) => {
       [question]: newAnswer
     }));
   };
-
+  
   const submitAnswer = (question) => {
     updateAnswer(childName, question, tempAnswers[question]);
   };
 
   return (
-    <div>
-      <h2>Questions and Answers for {childName}</h2>
-      <ul className="list-group">
+    <div className="qa-container">
+      <h2 className="qa-header">Questions and Answers for {childName}</h2>
+      <ul className="qa-list">
         {questions.map((qa, index) => (
-          <li key={index} className="list-group-item">
-            <strong>{qa.question}</strong>
+          <li key={index} className="qa-item">
+            <strong className="qa-question">{qa.question}</strong>
             <input 
               type="text" 
-              className="form-control mt-2" 
+              className="qa-input" 
               value={tempAnswers[qa.question] || ''} 
               onChange={(e) => handleAnswerChange(qa.question, e.target.value)} 
             />
+          </li>
+        ))}
+            <div className="qa-btns">
             <button 
-              className="btn btn-primary mt-2"
-              onClick={() => submitAnswer(qa.question)}
+              className="qa-button"
+              onClick={() => submitAnswer()}
             >
               Submit Answer
             </button>
-          </li>
-        ))}
+            </div>
       </ul>
     </div>
   );

@@ -1,20 +1,18 @@
-import React, { useEffect, useState } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { useChild } from './context/ChildContext'; // استيراد الهوك
+import React, { useState } from 'react';
+import { useChild } from './context/ChildContext';
 import ChildList from './accountPages/ChildList';
 import QAList from './QAList';
 import AddChildForm from './accountPages/AddChildForm';
 import EditChildForm from './accountPages/EditChildForm';
+import '../styles/questionPage.css';
 
 const QuestionsPage = () => {
-  const { childrenData, addChild, updateChild, deleteChild,setChildrenData } = useChild(); // استخدام الهوك
+  const { childrenData, addChild, updateChild, deleteChild } = useChild();
   const [children, setChildren] = useState(childrenData);
-
   const [selectedChild, setSelectedChild] = useState(null);
   const [addingChild, setAddingChild] = useState(false);
   const [editingChild, setEditingChild] = useState(null);
- 
-  
+
   const updateAnswer = (childName, question, answer) => {
     setChildren(children.map(child => 
       child.name === childName 
@@ -24,23 +22,19 @@ const QuestionsPage = () => {
   };
 
   return (
-    <div className="container mt-5">
-      <h1 class="text-center mb-4">Answer Questions for Each Child</h1>
-      <div className="row mb-3">
-        <div className="col-md-6">
-          <button className="btn btn-primary" onClick={() => setAddingChild(true)}>Add Child</button>
-        </div>
-        <div className="col-md-6 text-right">
-          {selectedChild && (
-            <button className="btn btn-secondary" onClick={() => setEditingChild(selectedChild)}>Edit Child</button>
-          )}
-        </div>
+    <div className="questions-page">
+      <h1 className="page-title">Answer Questions for Each Child</h1>
+      <div className="actions">
+        <button className="btn-add-child" onClick={() => setAddingChild(true)}>Add Child</button>
+        {selectedChild && (
+          <button className="btn-edit-child" onClick={() => setEditingChild(selectedChild)}>Edit Child</button>
+        )}
       </div>
-      <div className="row">
-        <div className="col-md-4">
+      <div className="content">
+        <div className="child-list section">
           <ChildList children={childrenData} setSelectedChild={setSelectedChild} />
         </div>
-        <div className="col-md-8">
+        <div className="qa-section section">
           {selectedChild && (
             <QAList 
               questions={selectedChild.questions} 
@@ -51,14 +45,25 @@ const QuestionsPage = () => {
         </div>
       </div>
 
-      {addingChild && <AddChildForm addChild={addChild} setAddingChild={setAddingChild} />}
+      {addingChild && (
+        <div className="modal-overlay" onClick={() => setAddingChild(false)}>
+          <div className="modal-content" onClick={e => e.stopPropagation()}>
+            <AddChildForm addChild={addChild} setAddingChild={setAddingChild} />
+          </div>
+        </div>
+      )}
+
       {editingChild && (
-        <EditChildForm 
-          child={editingChild} 
-          updateChild={updateChild} 
-          setEditingChild={setEditingChild} 
-          deleteChild={deleteChild}
-        />
+        <div className="modal-overlay" onClick={() => setEditingChild(null)}>
+          <div className="modal-content" onClick={e => e.stopPropagation()}>
+            <EditChildForm 
+              child={editingChild} 
+              updateChild={updateChild} 
+              setEditingChild={setEditingChild} 
+              deleteChild={deleteChild}
+            />
+          </div>
+        </div>
       )}
     </div>
   );

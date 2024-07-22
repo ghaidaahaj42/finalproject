@@ -1,21 +1,28 @@
 import React from 'react';
+import '../../styles/childList.css';
 
 const ChildList = ({ children, setSelectedChild }) => {
   return (
-    <div>
+    <div className="child-list-container">
       <h2>Children List</h2>
-      <ul className="list-group">
+      <div className="child-list">
+        <div className="child-list-headings">
+          <div><h4>Name</h4></div>
+          <div><h4>Age</h4></div>
+          <div><h4>Date of Birth</h4></div>
+        </div>
         {children.map((child, index) => (
-          <li 
+          <div 
             key={index} 
-            className="list-group-item" 
+            className="child-list-item" 
             onClick={() => setSelectedChild(child)}
-            style={{ cursor: 'pointer' }}
           >
-            {child.name}
-          </li>
+            <div className="child-name">{child.name}</div>
+            <div className="child-age">{child.age}</div>
+            <div className="child-dob">{child.dob}</div>
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   );
 };

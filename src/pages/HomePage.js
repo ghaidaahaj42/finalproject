@@ -59,20 +59,6 @@ const HomePage = () => {
             <img src="Marmelada.png" alt="Company Logo 3" />
             <img src="Mamme.png" alt="Company Logo 5" />
           </div>
-<<<<<<< HEAD
-        </Collapse>
-
-        <h3 className="text-center mb-4">למה לבחור ב-GiftFlow?</h3>
-        <ul className="list-unstyled text-center mx-auto" style={{ maxWidth: "600px" }}>
-          <li className="mb-3"><strong>מותאם לילדים:</strong> הפלטפורמה שלנו מיועדת במיוחד לילדים, ומבטיחה שכל ההמלצות למתנות יהיו מתאימות לגיל ולענייניו של הילד.</li>
-          <li className="mb-3"><strong>ילדים מרובים, חשבון אחד:</strong> ניהול של רשימות מתנות עבור כל הילדים שלך מתוך חשבון ההורה היחידי. ניהול קל בין הפרופילים ושמירה על עדכון רשימות המתנות עבור ענייניהם המשתנים של הילדים שלך.</li>
-          <li className="mb-3"><strong>נוח וכיף:</strong> גרום להעברת מתנות להיות כיפית וללא סטרס. עם GiftFlow, אתם יכולים להיות בטוחים שכל מתנה היא משהו שהילד שלכם יעריך.</li>
-        </ul>
-
-        <div className="text-center mt-4">
-          <Link to="/ai-help"><button className="btn btn-primary"> בואו לנשות !</button></Link> 
-=======
->>>>>>> 7d228dceaa59c48941dc4129f909f4dd4a1d2d72
         </div>
       </div>
 

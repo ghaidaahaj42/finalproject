@@ -1,28 +1,27 @@
 import React, { useState } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import '../../styles/GiftsPage.css'; // تأكد من وجود ملف CSS هنا
-import { useChild } from '../context/ChildContext'; // استيراد الهوك
+import '../../styles/GiftsPage.css'; 
+import { useChild } from '../context/ChildContext';
 import ChildList from './ChildList';
 import GiftList from './GiftList';
 import AddGiftForm from './AddGiftForm';
 import EditGiftForm from './EditGiftForm';
 import InvetationForom from "../InvetationPages/InvetationForom";
-import { color } from 'framer-motion';
 
 const GiftsPage = () => {
-  const { childrenData } = useChild(); // استخدام الهوك
-  const [children, setChildren] = useState(childrenData)
+  const { childrenData } = useChild(); 
+  const [children, setChildren] = useState(childrenData);
   const [selectedChild, setSelectedChild] = useState(null);
   const [addingGift, setAddingGift] = useState(false);
   const [editingGift, setEditingGift] = useState(null);
   const [invite, setInvitation] = useState(false);
+  const [view, setView] = useState('list');
 
   const addGift = (childName, gift) => {
     setChildren(children?.map(child => 
-      child.name === childName ? { ...child, gifts: [...child.gifts, gift] }  : child
+      child.name === childName ? { ...child, gifts: [...child.gifts, gift] } : child
     ));
-    
     setAddingGift(false);
+    setView('list');
   };
 
   const deleteGift = (childName, giftId) => {
@@ -43,76 +42,85 @@ const GiftsPage = () => {
   };
 
   return (
-    <div className="container mt-5 gifts-page">
-      <h1 className="text-center mb-4">Select a Child to View and Manage Gifts</h1>
-      <div className="row">
-        <div className="col-md-4">
+    <div className="gifts-page">
+      <h1 className="page-title">Manage Gifts</h1>
+      <div className="page-content">
+        <div className="child-list">
           <ChildList children={children} setSelectedChild={setSelectedChild} />
         </div>
-        <div className="col-md-8">
+        <div className="gift-section">
           {selectedChild && (
             <>
-              <div className="mb-3">
-                <button className="btn btn-primary" onClick={() => setAddingGift(true)}>Add Gift</button>
+              <div className="view-switcher">
+                <button className="btn" onClick={() => setView('add')}>Add Gift</button>
+                <button className="btn" onClick={() => setView('list')}>Suggesting Gifts</button>
+                <button className="btn" onClick={() => setView('list')}>The child will love</button>
               </div>
-              <GiftList className='gg'
-                gifts={selectedChild?.gifts} 
-                deleteGift={deleteGift} 
-                setEditingGift={setEditingGift} 
-                childName={selectedChild?.name}
-              />
+              {view === 'list' && (
+                <GiftList
+                  className = 'gift'
+                  gifts={selectedChild?.gifts} 
+                  deleteGift={deleteGift} 
+                  setEditingGift={setEditingGift} 
+                  childName={selectedChild?.name}
+                />
+              )}
+              {view === 'add' && (
+                <AddGiftForm 
+                  addGift={addGift} 
+                  setAddingGift={setAddingGift} 
+                  childName={selectedChild?.name}
+                />
+              )}
             </>
           )}
         </div>
       </div>
 
-      {addingGift && selectedChild && (
-        <AddGiftForm 
-          addGift={addGift} 
-          setAddingGift={setAddingGift} 
-          childName={selectedChild?.name}
-        />
-      )}
-
       {editingGift && selectedChild && (
-        <EditGiftForm 
-          gift={editingGift} 
-          updateGift={updateGift} 
-          setEditingGift={setEditingGift} 
-          childName={selectedChild?.name}
-        />
-      )} 
-
-
-
-
-
-
-
-{selectedChild && (
-  <div className="d-flex justify-content-center">
-    <button class="btn btn-secondary" onClick={() => setInvitation(true)}>I'm done! Invite friends</button>
-  </div>
-)}
-      
+        <div className="modal-overlay">
+          <div className="modal-content">
+            <EditGiftForm 
+              gift={editingGift} 
+              updateGift={updateGift} 
+              setEditingGift={setEditingGift} 
+              childName={selectedChild?.name}
+            />
+          </div>
+        </div>
+      )}
 
       {addingGift && selectedChild && (
-        <AddGiftForm 
-          addGift={addGift} 
-          setAddingGift={setAddingGift} 
-          childName={selectedChild.name} 
-        />
+        <div className="modal-overlay">
+          <div className="modal-content">
+            <AddGiftForm 
+              addGift={addGift} 
+              setAddingGift={setAddingGift} 
+              childName={selectedChild?.name}
+            />
+          </div>
+        </div>
       )}
 
-
-
-{invite && selectedChild && (
-        <InvetationForom 
-        listOfGifts={selectedChild.gifts}
-          childName={selectedChild.name} 
-        />
+      {selectedChild && (
+        <div className="invite-section">
+          <button className="btn invite-btn" onClick={() => {
+            console.log('Invite button clicked'); // Debug log
+            setInvitation(true);
+          }}>Invite Friends</button>
+        </div>
       )}
 
+      {invite && selectedChild && (
+        <div className="modal-overlay">
+          <div className="modal-content">
+            <InvetationForom 
+              listOfGifts={selectedChild.gifts}
+              childName={selectedChild.name} 
+            />
+          </div>
+        </div>
+      )}
     </div>
   );
 };
