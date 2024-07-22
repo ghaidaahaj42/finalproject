@@ -1,29 +1,11 @@
-body, html, #root, .App {
-  height: 100%;
+body{
+  width: 100%;
   margin: 0;
   padding: 0;
-  
+  box-sizing: border-box;
     direction: rtl;
-  
-}
-
-.App {
-  display: flex;
-  flex-direction: column;
-}
-
-.App .content {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-}
-
-.navbar {
-  flex: 0 0 auto; /* Prevents the navbar from growing */
-}
-
-.screen {
-  flex: 1;
-  overflow: auto; /* Allows individual screens to scroll if content overflows */
-}
+    background: linear-gradient(#99abb81e, #812d6d6c);
+    background-color: #cac2c13b;
+    background-image: url("https://www.transparenttextures.com/patterns/xv.png");
+    /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */ 
+   }

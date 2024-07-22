@@ -1,64 +1,67 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import '../styles/NavBar.css';
-import { NavDropdown, Nav } from 'react-bootstrap';
 
 const Navbarlist = ({ currentUser, onLogout }) => {
-  return (
-    <div className="container">
-      <header className="d-flex justify-content-between py-3">
-        <ul className="nav nav-pills">
-          <li className="nav-item">
-            <NavLink to="/" className="nav-link" activeClassName="active" exact>
-              בית
-            </NavLink>
-          </li>
-          <li className="nav-item">
-            <NavLink to="/products" className="nav-link" activeClassName="active">
-            מוצרים נבחרים
-            </NavLink>
-          </li>
-          <li className="nav-item">
-            <NavLink to="/ai-help" className="nav-link" activeClassName="active">
-              AI help me!
-            </NavLink>
-          </li>
-          <li className="nav-item">
-            <NavLink to="/about" className="nav-link" activeClassName="active">
-              עלינו
-            </NavLink>
-          </li>
-        </ul>
+  const [isOpen, setIsOpen] = useState(false);
 
-        <ul className="nav nav-pills">
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
+
+  return (
+    <nav className="navbar">
+      <div className="container">
+        <button className="hamburger" onClick={toggleMenu}>
+          &#9776;
+        </button>
+        
+        <div className={`nav-menu ${isOpen ? 'open' : ''}`}>
+          <NavLink to="/" className="nav-link" onClick={() => setIsOpen(false)}>
+            Home
+          </NavLink>
+          <NavLink to="/products" className="nav-link" onClick={() => setIsOpen(false)}>
+            Products
+          </NavLink>
+          <NavLink to="/ai-help" className="nav-link" onClick={() => setIsOpen(false)}>
+            AI help me!
+          </NavLink>
+          <NavLink to="/about" className="nav-link" onClick={() => setIsOpen(false)}>
+            About Us
+          </NavLink>
+        </div>
+        <div className="nav-brand">
           {!currentUser ? (
-            <li className="nav-item">
-              <NavLink to="/login" className="nav-link" activeClassName="active">
-                כניסה
-              </NavLink>
-            </li>
+            <NavLink to="/login" className="nav-link" id="nav-sign-in">
+              Sign In
+            </NavLink>
           ) : (
-            <li className="nav-item d-flex align-items-center">
-              <NavDropdown title={currentUser} id="navbarScrollingDropdown">
-                <NavDropdown.Item as={Link} to="/gifts-Page">
-                  רשימת המתנות שלי
-                </NavDropdown.Item>
-                <NavDropdown.Item as={Link} to="/questions-page">
-                  ילדים שלי
-                </NavDropdown.Item>
-                <NavDropdown.Divider />
-                {/* <NavDropdown.Item href="#action5">
-                  Something else here
-                </NavDropdown.Item> */}
-              </NavDropdown>
-              <Nav.Link as={Link} to="/login" onClick={onLogout} className="nav-link ml-2">
-                יציאה
-              </Nav.Link>
-            </li>
+            <div className="dropdown">
+              <button className="dropbtn">
+                <div className="user">
+                  {currentUser.charAt(0)}
+                </div>
+              </button>
+              <div className="dropdown-content">
+                <Link to="/gifts-Page" onClick={() => setIsOpen(false)}>
+                  Children List
+                </Link>
+                <Link to="/questions-page" onClick={() => setIsOpen(false)}>
+                  My Children
+                </Link>
+                <Link to="/calendar" onClick={() => setIsOpen(false)}>
+                  Calendar
+                </Link>
+                <div className="dropdown-divider"></div>
+                <Link to="/login" onClick={() => { onLogout(); setIsOpen(false); }}>
+                  Sign Out
+                </Link>
+              </div>
+            </div>
           )}
-        </ul>
-      </header>
-    </div>
+        </div>
+      </div>
+    </nav>
   );
 };
 

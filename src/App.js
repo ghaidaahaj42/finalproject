@@ -30,8 +30,8 @@ function App() {
 
   return (
       
-    <div className="container">
-<ChildProvider>
+    <div className="App">
+      <ChildProvider>
         <Balloons></Balloons> 
         <Navbarlist currentUser={currentUser} onLogout={handleLogout} />
         <Routes>
@@ -44,6 +44,7 @@ function App() {
           <Route path="/gifts-Page" element={<GiftsPage/>} />
           <Route path="/questions-page" element={<QuestionsPage/>} />
           <Route path="/register" element={<Register users={users} setUsers={setUsers} />} />
+          {/* <Route path="/register" element={<Register users={users} setUsers={setUsers} />} /> */}
           <Route path="/invitation/:childName" element={<InvetationPage />} />
           <Route path="/invitation-form" element={<InvetationForom />} />
           

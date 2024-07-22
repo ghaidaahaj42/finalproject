@@ -25,14 +25,14 @@ const QuestionsPage = () => {
 
   return (
     <div className="container mt-5">
-      <h1 className="text-center mb-4">בואו נכיר את הילד שלכם...</h1>
+      <h1 class="text-center mb-4">Answer Questions for Each Child</h1>
       <div className="row mb-3">
         <div className="col-md-6">
-          <button className="btn btn-primary" onClick={() => setAddingChild(true)}>הוספת ילד</button>
+          <button className="btn btn-primary" onClick={() => setAddingChild(true)}>Add Child</button>
         </div>
         <div className="col-md-6 text-right">
           {selectedChild && (
-            <button className="btn btn-secondary" onClick={() => setEditingChild(selectedChild)}>ערוך ילד</button>
+            <button className="btn btn-secondary" onClick={() => setEditingChild(selectedChild)}>Edit Child</button>
           )}
         </div>
       </div>

@@ -44,8 +44,7 @@ const GiftsPage = () => {
 
   return (
     <div className="container mt-5 gifts-page">
-      <h1 className="text-center mb-4">ניהול רשימות</h1>
-      <h2 className="text-center mb-4">אנא לחצו על שם הילד בשביל לערוך את הרשימה שלו</h2>
+      <h1 className="text-center mb-4">Select a Child to View and Manage Gifts</h1>
       <div className="row">
         <div className="col-md-4">
           <ChildList children={children} setSelectedChild={setSelectedChild} />
@@ -54,7 +53,7 @@ const GiftsPage = () => {
           {selectedChild && (
             <>
               <div className="mb-3">
-                <button className="btn btn-primary" onClick={() => setAddingGift(true)}>הוספת מתנה</button>
+                <button className="btn btn-primary" onClick={() => setAddingGift(true)}>Add Gift</button>
               </div>
               <GiftList className='gg'
                 gifts={selectedChild?.gifts} 
@@ -92,7 +91,7 @@ const GiftsPage = () => {
 
 {selectedChild && (
   <div className="d-flex justify-content-center">
-    <button className="btn btn-secondary" onClick={() => setInvitation(true)}>סיימתי ! להזמין חברים</button>
+    <button class="btn btn-secondary" onClick={() => setInvitation(true)}>I'm done! Invite friends</button>
   </div>
 )}
       
