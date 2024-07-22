@@ -110,7 +110,7 @@ const HomePage = () => {
         </ul>
 
         <div className="text-center mt-4">
-          <Link to="/ai-help"><button className="btn btn-primary">הצטרפו ל-GiftFlow היום!</button></Link> 
+          <Link to="/ai-help"><button className="btn btn-primary"> בואו לנשות !</button></Link> 
         </div>
       </div>
 
