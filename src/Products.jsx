@@ -1,19 +1,16 @@
-import React, { useState } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { Grid, Snackbar, Alert } from '@mui/material';
-
+import React, { useEffect, useState } from 'react';
+import productData from './assets/products.json';
 import './styles/Products.css';
 import ProductCard from './Product';
 
 function Products() {
-  const [products, setProducts] = useState([
-    { id: 1, name: 'Lego Package', description: 'This is product 1', image: 'https://www.lego.com/cdn/cs/set/assets/blt61f68cd89d49cc06/11029_alt1.png', isLiked: false },
-    { id: 2, name: 'Chess', description: 'This is product 2', image: 'https://5.imimg.com/data5/PG/LD/CL/SELLER-14274915/magnetic-chess-game.jpg', isLiked: false },
-    { id: 3, name: 'Product 3', description: 'This is product 3', image: 'https://m.media-amazon.com/images/I/71x1TrqgSmL._AC_UF894,1000_QL80_.jpg', isLiked: false },
-    { id: 4, name: 'Lego Package', description: 'This is product 1', image: 'https://www.lego.com/cdn/cs/set/assets/blt61f68cd89d49cc06/11029_alt1.png', isLiked: false },
-    { id: 5, name: 'Chess', description: 'This is product 2', image: 'https://5.imimg.com/data5/PG/LD/CL/SELLER-14274915/magnetic-chess-game.jpg', isLiked: false },
-    { id: 6, name: 'Product 3', description: 'This is product 3', image: 'https://m.media-amazon.com/images/I/71x1TrqgSmL._AC_UF894,1000_QL80_.jpg', isLiked: false },
-  ]);
+  const [products, setProducts] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [priceFilter, setPriceFilter] = useState('');
+
+  useEffect(() => {
+    setProducts(productData);
+  }, []);
 
   const [likedProducts, setLikedProducts] = useState([]);
   const [snackbarOpen, setSnackbarOpen] = useState(false);
@@ -29,44 +26,74 @@ function Products() {
 
     if (likedProduct.isLiked) {
       setLikedProducts([...likedProducts, likedProduct]);
+      setSnackbarMessage(`You have liked ${likedProduct.name}`);
     } else {
       setLikedProducts(likedProducts.filter(product => product.id !== id));
+      setSnackbarMessage(`You have unliked ${likedProduct.name}`);
     }
-
-    const message = likedProduct.isLiked ? `You have added ${likedProduct.name}` : `You have removed ${likedProduct.name}`;
-    setSnackbarMessage(message);
     setSnackbarOpen(true);
   };
+
+
 
   const handleCloseSnackbar = () => {
     setSnackbarOpen(false);
   };
 
+  const handleSearch = (event) => {
+    setSearchTerm(event.target.value);
+  };
+
+  const handlePriceFilter = (event) => {
+    setPriceFilter(event.target.value);
+  };
+
+  const filteredProducts = products.filter(product => {
+    const matchesSearch = product.name.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesPrice = priceFilter ? product.price <= priceFilter : true;
+    return matchesSearch && matchesPrice;
+  });
+
   return (
-    <div className="container">
-    <div className="home-content text-center mb-5">
+    <div className="products">
+      <div className="product-cards">
         <h1>מוצרים נבחרים</h1>
-        <div className="card-body">
-          <Grid style={{backgroundColor:'transparent'}} container spacing={3}>
-            {products.map((product) => (
-              <ProductCard
-                key={product.id}
-                id={product.id}
-                name={product.name}
-                image={product.image}
-                description={product.description}
-                isLiked={product.isLiked}
-                onLikeToggle={() => toggleLike(product.id)}
-              />
-            ))}
-          </Grid>
+        <input
+          type="text"
+          className="search-bar"
+          placeholder="Search for products..."
+          value={searchTerm}
+          onChange={handleSearch}
+        />
+        <select className="price-filter" value={priceFilter} onChange={handlePriceFilter}>
+          <option value="">Filter by price</option>
+          <option value="20">Up to ₪20</option>
+          <option value="30">Up to ₪30</option>
+          <option value="60">Up to ₪60</option>
+        </select>
+        <div className="grid-container">
+          {filteredProducts.map((product) => (
+            <ProductCard
+              key={product.id}
+              id={product.id}
+              name={product.name}
+              image={product.image}
+              description={product.description}
+              price={product.price}
+              isLiked={product.isLiked}
+              onLikeToggle={() => toggleLike(product.id)}
+            />
+          ))}
         </div>
       </div>
-      <Snackbar open={snackbarOpen} autoHideDuration={3000} onClose={handleCloseSnackbar}>
-        <Alert onClose={handleCloseSnackbar} severity="success" sx={{ width: '100%' }}>
+      <div className={`snackbar ${snackbarOpen ? 'show' : ''}`}>
+        <div className="snackbar-content">
           {snackbarMessage}
-        </Alert>
-      </Snackbar>
+          <button id="close-btn" onClick={handleCloseSnackbar}>
+            &times;
+          </button>
+        </div>
+      </div>
     </div>
   );
 }
