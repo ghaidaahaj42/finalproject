@@ -13,6 +13,7 @@ import InvetationPage from './pages/InvetationPages/InvetationPage';
 import InvetationForom from './pages/InvetationPages/InvetationForom'
 import GiftsPage from './pages/accountPages/GiftsPage';
 import QuestionsPage from './pages/QuestionsPage';
+import Calendar from './pages/accountPages/Calendar';
 import { ChildProvider } from './pages/context/ChildContext';
 
 function App() {
@@ -41,6 +42,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/ai-help" element={<SurveyForm/>} />
           <Route path="/products" element={<Products/>} />
+          <Route path="/calendar" element={<Calendar/>} />
           <Route path="/gifts-Page" element={<GiftsPage/>} />
           <Route path="/questions-page" element={<QuestionsPage/>} />
           <Route path="/register" element={<Register users={users} setUsers={setUsers} />} />

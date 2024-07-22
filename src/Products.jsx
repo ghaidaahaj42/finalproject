@@ -34,8 +34,6 @@ function Products() {
     setSnackbarOpen(true);
   };
 
-
-
   const handleCloseSnackbar = () => {
     setSnackbarOpen(false);
   };
@@ -56,8 +54,7 @@ function Products() {
 
   return (
     <div className="products">
-      <div className="product-cards">
-        <h1>מוצרים נבחרים</h1>
+      <div className="filter-container">
         <input
           type="text"
           className="search-bar"
@@ -67,10 +64,13 @@ function Products() {
         />
         <select className="price-filter" value={priceFilter} onChange={handlePriceFilter}>
           <option value="">Filter by price</option>
-          <option value="20">Up to ₪20</option>
-          <option value="30">Up to ₪30</option>
-          <option value="60">Up to ₪60</option>
+          <option value="20">Up to $20</option>
+          <option value="30">Up to $30</option>
+          <option value="60">Up to $60</option>
         </select>
+      </div>
+      <div className="product-cards">
+        <h1>מוצרים נבחרים</h1>
         <div className="grid-container">
           {filteredProducts.map((product) => (
             <ProductCard
