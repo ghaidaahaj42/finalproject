@@ -39,12 +39,12 @@ const Navbarlist = ({ currentUser, onLogout }) => {
             <div className="dropdown">
               <button className="dropbtn">
                 <div className="user">
-                {currentUser.email.charAt(0)}
+                  {currentUser.email.charAt(0)}
                 </div>
               </button>
               <div className="dropdown-content">
                 <Link to="/gifts-Page" onClick={() => setIsOpen(false)}>
-                  Children List
+                  Manage Gifts
                 </Link>
                 <Link to="/questions-page" onClick={() => setIsOpen(false)}>
                   My Children
