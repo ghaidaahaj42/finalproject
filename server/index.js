@@ -7,16 +7,11 @@ const products = require('./products.json');
 const app = express();
 const port = 4000;
 
-
 app.use(bodyParser.json());
 app.use(cors({
   origin: ['http://localhost:3000'],
   credentials: true
 }));
-
-app.get('/', (req, res) => {
-  res.send('Server is running!');
-});
 
 const groq = new Groq({
   apiKey: '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',
