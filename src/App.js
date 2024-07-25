@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes,Switch } from 'react-router-dom';
 import Login from './pages/Login';
 import About from './pages/About';
@@ -17,16 +17,20 @@ import Calendar from './pages/accountPages/Calendar';
 import { ChildProvider } from './pages/context/ChildContext';
 
 function App() {
-  const [users, setUsers] = useState([{ email: 'test@gmail.com', password: '123' }]);
-  const [currentUser, setCurrentUser] = useState(null);
+  const [users, setUsers] = useState([]);
+  const [currentUser, setCurrentUser] = useState(() => {
+    const userInfo = localStorage.getItem('user-info');
+    return userInfo ? JSON.parse(userInfo) : null;
+  });
 
-
-  const handleLogin = (username) => {
-    setCurrentUser(username);
+  const handleLogin = (user) => {
+    setCurrentUser(user);
+    localStorage.setItem('user-info', JSON.stringify(user));
   };
 
   const handleLogout = () => {
     setCurrentUser(null);
+    localStorage.removeItem('user-info');
   };
 
   return (
