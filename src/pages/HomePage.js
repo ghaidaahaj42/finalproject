@@ -64,7 +64,7 @@ const HomePage = () => {
 
       <div className="button">
         <button onClick={() => setOpen(!open)}>
-          {open ? "Hide Details" : "Show Details"}
+          {open ? "Hide Details" : "Show Main Features"}
         </button>
       </div>
 
