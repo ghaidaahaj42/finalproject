@@ -2,24 +2,52 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import DatePicker from 'react-datepicker'; 
 import 'react-datepicker/dist/react-datepicker.css'; 
-import './InvitationForom.css'; 
+import { firestore } from '../../firebase/firebase';
+import { doc, updateDoc, arrayUnion } from 'firebase/firestore';
+import { collection, addDoc } from 'firebase/firestore';
 
-const InvitationForm = ({ listOfGifts, childName }) => {
+const InvitationForm = ({ listOfGifts, childName, childId, friends,summary }) => {
+    console.log(summary)
     const [invitation, setInvitation] = useState({
         name: childName,
-        age: '',
         place: '',
         mydate: null,
         time: '',
         description: '',
-        list: listOfGifts
+        list: listOfGifts,
+        summary:summary
     });
 
     const navigate = useNavigate();
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        navigate(`/invitation/${childName}`, { state: invitation });
+
+        const invitationData = {
+            ...invitation,
+            date: invitation.mydate ? invitation.mydate.toISOString().split('T')[0] : '',
+            list: listOfGifts,
+            childId: childId,
+            summary: summary
+        };
+
+        try {
+            // Create a new invitation document
+            const invitationRef = await addDoc(collection(firestore, 'invitations'), invitationData);
+
+            // Associate the invitation with the friends
+            for (const friendId of friends) {
+                const childRef = doc(firestore, 'children', friendId);
+                await updateDoc(childRef, {
+                    invitations: arrayUnion(invitationRef.id) // Store invitation ID in child document
+                });
+            }
+            
+            // Navigate to the invitation page with invitationId
+            navigate(`/invitation/${invitationRef.id}`);
+        } catch (error) {
+            console.error('Error sending invitations:', error);
+        }
     };
 
     return (
@@ -31,15 +59,6 @@ const InvitationForm = ({ listOfGifts, childName }) => {
                 </div>
                 <div className="invitation-modal-body">
                     <form onSubmit={handleSubmit}>
-                        <div className="form-group">
-                            <label htmlFor="age">Age</label>
-                            <input
-                                type="text"
-                                id="age"
-                                value={invitation.age}
-                                onChange={(e) => setInvitation({ ...invitation, age: e.target.value })}
-                            />
-                        </div>
                         <div className="form-group">
                             <label htmlFor="place">Location</label>
                             <input
@@ -53,7 +72,7 @@ const InvitationForm = ({ listOfGifts, childName }) => {
                         <div className="form-group">
                             <label>Date</label>
                             <DatePicker
-                            className='date'
+                                className='date'
                                 selected={invitation.mydate} 
                                 onChange={(date) => setInvitation({ ...invitation, mydate: date })}
                                 dateFormat="yyyy-MM-dd"
@@ -64,7 +83,9 @@ const InvitationForm = ({ listOfGifts, childName }) => {
                         <div className="form-group">
                             <label htmlFor="time">Time</label>
                             <input
-                                type="text"
+                            className='date'
+                            style={{padding:"10px", border:"2px solid grey", "borderRadius":"10px"}}
+                                type="time"
                                 id="time"
                                 value={invitation.time}
                                 onChange={(e) => setInvitation({ ...invitation, time: e.target.value })}
@@ -80,7 +101,7 @@ const InvitationForm = ({ listOfGifts, childName }) => {
                                 onChange={(e) => setInvitation({ ...invitation, description: e.target.value })}
                             ></textarea>
                         </div>
-                        <div >
+                        <div>
                             <button type="submit">Share Invitation</button>
                         </div>
                     </form>
