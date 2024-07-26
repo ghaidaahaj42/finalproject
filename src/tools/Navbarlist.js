@@ -49,9 +49,9 @@ const Navbarlist = ({ currentUser, onLogout }) => {
                 <Link to="/questions-page" onClick={() => setIsOpen(false)}>
                   My Children
                 </Link>
-                <Link to="/calendar" onClick={() => setIsOpen(false)}>
+                {/* <Link to="/calendar" onClick={() => setIsOpen(false)}>
                   Calendar
-                </Link>
+                </Link> */}
                 <div className="dropdown-divider"></div>
                 <Link to="/login" onClick={() => { onLogout(); setIsOpen(false); }}>
                   Sign Out

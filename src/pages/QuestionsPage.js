@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useChild } from './context/ChildContext';
 import ChildList from './accountPages/ChildList';
 import QAList from './QAList';
@@ -8,17 +8,41 @@ import '../styles/questionPage.css';
 
 const QuestionsPage = () => {
   const { childrenData, addChild, updateChild, deleteChild } = useChild();
-  const [children, setChildren] = useState(childrenData);
   const [selectedChild, setSelectedChild] = useState(null);
   const [addingChild, setAddingChild] = useState(false);
   const [editingChild, setEditingChild] = useState(null);
+  const [localQuestions, setLocalQuestions] = useState([]);
 
-  const updateAnswer = (childName, question, answer) => {
-    setChildren(children.map(child => 
-      child.name === childName 
-        ? { ...child, questions: child.questions.map(q => q.question === question ? { ...q, answer } : q) }
-        : child
-    ));
+  useEffect(() => {
+    if (selectedChild) {
+      setLocalQuestions(selectedChild.questions);
+    }
+  }, [selectedChild]);
+
+  const updateAnswer = (question, answer) => {
+    const updatedQuestions = localQuestions.map(q => 
+      q.question === question ? { ...q, answer } : q
+    );
+    setLocalQuestions(updatedQuestions);
+  };
+
+  const handleAddChild = (newChild) => {
+    // Ensure DOB is not in the future
+    if (new Date(newChild.dob) > new Date()) {
+      alert('Date of Birth cannot be in the future.');
+      return;
+    }
+    
+    addChild(newChild);
+    setAddingChild(false);
+  };
+
+  const handleSaveChanges = () => {
+    if (selectedChild) {
+      updateChild(selectedChild.id, { ...selectedChild, questions: localQuestions });
+      setSelectedChild({ ...selectedChild, questions: localQuestions });
+    }
+    alert("Changes saved successfully.");
   };
 
   return (
@@ -27,7 +51,9 @@ const QuestionsPage = () => {
       <div className="actions">
         <button className="btn-add-child" onClick={() => setAddingChild(true)}>Add Child</button>
         {selectedChild && (
-          <button className="btn-edit-child" onClick={() => setEditingChild(selectedChild)}>Edit Child</button>
+          <>
+            <button className="btn-edit-child" onClick={() => setEditingChild(selectedChild)}>Edit Child</button>
+          </>
         )}
       </div>
       <div className="content">
@@ -37,7 +63,7 @@ const QuestionsPage = () => {
         <div className="qa-section section">
           {selectedChild && (
             <QAList 
-              questions={selectedChild.questions} 
+              questions={localQuestions} 
               updateAnswer={updateAnswer} 
               childName={selectedChild.name}
             />
@@ -48,7 +74,10 @@ const QuestionsPage = () => {
       {addingChild && (
         <div className="modal-overlay" onClick={() => setAddingChild(false)}>
           <div className="modal-content" onClick={e => e.stopPropagation()}>
-            <AddChildForm addChild={addChild} setAddingChild={setAddingChild} />
+            <AddChildForm 
+              addChild={handleAddChild} 
+              setAddingChild={setAddingChild} 
+            />
           </div>
         </div>
       )}
@@ -65,6 +94,15 @@ const QuestionsPage = () => {
           </div>
         </div>
       )}
+
+{selectedChild && (
+          <>
+          <div className='actions'>
+            <button className="btn-save-changes" onClick={handleSaveChanges}>Save Changes</button>
+          </div>
+            
+          </>
+        )}
     </div>
   );
 };

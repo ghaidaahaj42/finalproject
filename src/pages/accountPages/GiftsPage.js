@@ -185,7 +185,26 @@ const GiftsPage = () => {
     setEditingGift(null);
   };
 
+  const addFriend = async (childName, friendId) => {
+    const updatedChildren = children.map((child) =>
+      child.name === childName
+        ? { ...child, friends: [...child.friends, friendId] }
+        : child
+    );
+    setChildren(updatedChildren);
 
+    const updatedSelectedChild = updatedChildren.find(
+      (child) => child.name === childName
+    );
+    setSelectedChild(updatedSelectedChild);
+
+    const childRef = doc(firestore, "children", updatedSelectedChild.id);
+    await updateDoc(childRef, {
+      friends: updatedSelectedChild.friends,
+    });
+
+    setAddingFriend(false);
+  };
 
   const handleButtonClick = (view) => {
     setView(view);
@@ -314,18 +333,12 @@ const GiftsPage = () => {
           </div>
         </div>
       )}
-      {/* {addingFriend && selectedChild && (
+      {addingFriend && selectedChild && (
         <div className="modal-overlay">
           <div className="modal-content">
-            <AddFriendForm
-              children={children}
-              addFriend={addFriend}
-              setAddingFriend={setAddingFriend}
-              childName={selectedChild?.name}
-            />
           </div>
         </div>
-      )} */}
+      )}
       {selectedChild && (
         <div className="invite-section">
           <button

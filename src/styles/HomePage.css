@@ -1,93 +1,148 @@
-.home {
-  width: 80%;
-  margin: 120px auto;
-  margin-bottom: 0;
-  padding-bottom: 40px;
-}
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
 
-.home h1 {
+.homecontainer {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 80px;
   text-align: center;
-  font-size: 3.5rem;
-  font-weight: bolder;
-  margin: 40px auto;
-}
-
-.img-card {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0px auto;
+  max-width: 1150px;
+  border-radius: 30px;
+  margin: auto;
+  width: 90%;
+  margin-top: 60px;
+  background-color: #071952;
   position: relative;
-  width: 400px;
-  height: 400px;
-  perspective: 1000px;
-  border-radius: 20px;
+
   overflow: hidden;
-  
 }
 
-.home .img::before {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0px auto;
+.welcome {
+  font-size: 2.1em;
+  color: rgba(245, 245, 245, 0.895);
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.logo {
+  width: 450px;
+  height: auto;
+  margin-bottom: 5px;
+  border-radius: 0px;
+}
+
+.tagline {
+  font-size: 1.4em;
+  color: whitesmoke;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.description {
+  font-size: 1.1em;
+  color: whitesmoke;
+  line-height: 1.9;
+}
+
+body {
+  font-family: "Poppins", sans-serif; /* Using a more modern font */
+}
+
+.companies-section {
+  background: linear-gradient(
+    135deg,
+    #071952 0%,
+    #071952c1 100%
+  ); /* Gradient background */
+  color: white;
+  padding: 50px 20px;
+  text-align: center;
+  border-radius: 15px;
   position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Adding shadow for depth */
+}
+
+.companies-section::before {
   content: "";
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-size: 300% 300%;
-  animation: gradient 6s ease infinite;
-  z-index: -1;
-  width: 400px;
-  height: 400px;
-  perspective: 1000px;
-  border-radius: 20px;
-  
+  top: -60px;
+  left: -60px;
+  width: 250px;
+  height: 250px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  z-index: 1;
+  animation: float 6s ease-in-out infinite; /* Adding floating animation */
 }
 
-@keyframes gradient {
+.companies-section::after {
+  content: "";
+  position: absolute;
+  bottom: -60px;
+  right: -60px;
+  width: 350px;
+  height: 350px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  z-index: 1;
+  animation: float 8s ease-in-out infinite; /* Adding floating animation */
+}
+
+.companies-section h3 {
+  font-size: 2.5em;
+  color: white;
+  margin: 0;
+  z-index: 2;
+  position: relative;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Adding text shadow */
+}
+
+.companies-section p {
+  font-size: 1.2em;
+  margin-top: 15px;
+  z-index: 2;
+  position: relative;
+  font-weight: 300;
+  letter-spacing: 1px;
+}
+
+@keyframes float {
   0% {
-      background-position: 0% 50%;
+    transform: translateY(0);
   }
   50% {
-      background-position: 100% 50%;
+    transform: translateY(80px);
   }
   100% {
-      background-position: 0% 50%;
+    transform: translateY(0);
   }
 }
 
-.home .img{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0px auto;
-  perspective: 1000px;
-  height: 400px;
-  
+.heading-three {
+  color: white;
+}
+.background-shape {
+  position: absolute;
+  border-radius: 50%;
+  z-index: 0;
 }
 
-.home .img img{
+.shape1 {
+  width: 300px;
+  height: 300px;
+  background: rgba(255, 255, 255, 0.3);
+  top: -150px;
+  left: -150px;
+}
+
+.shape2 {
   width: 400px;
-  transition: transform 0.1s ease-in-out;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-  border-radius: 10px;
-  background: linear-gradient(120deg, #f093fb, #f5576c, #000000, #005dfe54, #ff9a9e);
-}
-
-.home p {
-  text-align: center;
-  font-size: 1.2rem;
-}
-
-.home h5 {
-  margin: 35px auto;
-  font-size: 1.04rem;
-  text-align: center;
-  color: #333;
+  height: 400px;
+  background: rgba(255, 255, 255, 0.3);
+  bottom: -200px;
+  right: -200px;
 }
 
 .home .partners {
@@ -95,16 +150,15 @@
 }
 
 .home .partners h3 {
-  margin: 20px auto;
+  margin: 10px auto;
   text-align: center;
   font-size: 2.5rem;
 }
 
 .home .partners .moving-bar {
-  margin: 100px auto;
+  margin: 50px auto;
   overflow: hidden;
 }
-
 .home .partners .moving-bar-inner {
   margin: 30px auto;
   display: flex;
@@ -120,19 +174,18 @@
 
 @keyframes move {
   from {
-      transform: translateX(0%);
+    transform: translateX(0%);
   }
   to {
-      transform: translateX(-50%);
+    transform: translateX(-50%);
   }
 }
 
 .home .button {
-  margin: 30px auto;
+  margin: 20px auto;
   display: flex;
   justify-content: center;
   align-items: center;
-  border: none;
 }
 
 .home button {
@@ -142,7 +195,7 @@
   border: none;
   outline: none;
   border-radius: 20px;
-  background-color: #e391eed5;
+  background-color: #088395;
   color: #000;
 }
 
@@ -156,90 +209,129 @@
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
+  gap: 20px;
 }
 
 .row .card {
-  padding: 20px;
-  width: 290px;
-  height: 380px;
+  padding: 25px;
+  width: 380px;
+  min-height: 320px;
   display: flex;
-  gap: 20px;
-  justify-content: space-around;
-  align-items: center;
   flex-direction: column;
-  border-radius: 10px;
-  border: 1px solid #00000027;
-  box-shadow: 2px 2px 5px #deb5f171;
-  transition: all .3s ease-in;
+
+  border-radius: 15px;
+  border: none;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+  background: linear-gradient(to right, #f9f9f9, #e1d5de);
+  overflow: hidden; /* Prevents content overflow */
   margin: 20px;
 }
 
+.row .card:hover {
+  transform: translateY(-10px); /* Lift effect */
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2); /* Deeper shadow */
+}
+
 .row .card h5 {
+  color: #333;
   font-size: 1.4rem;
-  color: #cd78d8d5;
+  margin-bottom: 15px;
+  font-weight: 600;
 }
 
 .row .card p {
-  height: 300px;
-  color: #333;
+  color: #555;
   font-size: 1rem;
+  line-height: 1.6;
 }
 
 .why-choose-giftflow {
   text-align: center;
-  padding: 20px;
-  margin: 30px auto;
+  padding: 40px;
+  margin: 40px auto;
+
+  border-radius: 20px;
 }
 
 .why-choose-giftflow h3 {
-  font-size: 2rem;
-  margin-bottom: 20px;
-  color: #000;
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+  color: #333;
+  font-weight: 700;
 }
 
 .cards-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
-  align-items: center;
+  justify-content: center;
+  gap: 20px;
 }
 
 .cards-container .card {
   background: #fff;
   border: none;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 35px 20px;
+  border-radius: 15px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  padding: 40px 25px;
   margin: 20px;
-  width: 300px;
-  min-height: 360px;
+  width: 320px;
+  min-height: 380px;
   height: auto;
-  border: 1px solid #00000017;
-  transition: transform 0.3s, box-shadow 0.3s;
+  border: 1px solid #dcdcdc;
+  transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
 }
 
-.card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+.cards-container .card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
 }
 
-.card h5 {
+.cards-container .card h5 {
   color: #cd78d8d5;
-  font-size: 1.25rem;
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  font-weight: 600;
 }
 
-.card p {
-  font-size: 1rem;
+.cards-container .card p {
+  font-size: 1.1rem;
+  color: #555;
+  line-height: 1.6;
+}
+
+.cta-button {
+  margin-top: 40px;
+}
+
+.cta-button button {
+  padding: 15px 40px;
+  font-size: 1.2rem;
+  border: none;
+  outline: none;
+  border-radius: 25px;
+  background-color: #cd78d8;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.cta-button button:hover {
+  background-color: #b26bb2;
+  transform: scale(1.05);
 }
 
 footer {
   text-align: center;
   font-size: 1.1rem;
-  color: #eb81cb;
+  color: white;
+  padding: 5px 0;
+  font-weight: 500;
+  background-color: #eb81cb;
 }
 
 @media only screen and (max-width: 400px) {
   .row .card {
-      height: auto;
+    height: auto;
   }
 }

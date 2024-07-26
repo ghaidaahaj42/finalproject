@@ -1,24 +1,81 @@
-.team-cards-container {
+.about {
+  margin: 20px auto;
+  margin-bottom: 0;
+  padding-bottom: 40px;
+  width: 80%;
+  height: 100%;
+  text-align: center;
+  overflow: hidden;
+}
+
+.about h1 {
+  font-size: 3.5rem;
+  font-weight: bolder;
+  margin: 40px auto;
+}
+
+.about p {
+  font-size: 1rem;
+  margin: 20px auto;
+}
+
+.about .about-cards {
+  margin: 50px auto;
   display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center; /* Center-align the cards horizontally */
+  justify-content: space-between; /* Ensures equal spacing between cards */
+  align-items: center;
 }
 
-.team-card {
-  flex: 1 1 200px; /* Adjusted flex basis to make cards smaller */
-  background-color: transparent;
-  margin-bottom: 20px;
-  max-width: 100%; /* Ensure cards don't exceed their container width */
+.about .about-cards #card {
+  width: calc(25% - 30px); /* Each card takes up a quarter of the container */
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 10px;
+  border: 1px solid #00000027;
+  box-shadow: 2px 2px 5px #deb5f171;
+  transition: all 0.3s ease-in;
+  margin: 15px;
 }
 
-@media (min-width: 768px) {
-  .team-card {
-    flex: 1 1 calc(25% - 20px); /* Four cards per row with gap */
+.about .about-cards #card:hover {
+  transform: translateY(-8px);
+}
+
+.about .about-cards #card img {
+  width: 220px;
+  border-radius: 50%;
+  border: 1px dotted #00000062;
+  object-position: center;
+  object-fit: cover;
+  margin: 20px auto;
+}
+
+.about .about-cards #card h4 {
+  color: #cd78d8d5;
+}
+
+.about .about-cards #card p {
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.about .about-cards #card .email {
+  font-weight: 600;
+}
+
+@media only screen and (max-width: 1500px) {
+  .about {
+    height: auto;
   }
-}
 
-.title {
-  color: grey;
-}
+  .about .about-cards #card {
+    width: calc(25% - 20px); /* Adjust width for smaller screens */
+  }
 
+  .about .about-cards #card img {
+    width: 120px;
+  }
+  
+}
