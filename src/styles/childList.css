@@ -31,7 +31,11 @@
 }
 
 .child-list-headings {
-  background: linear-gradient(to right, rgba(223, 61, 183, 0.989), rgba(218, 77, 77, 0.972));
+  background: linear-gradient(
+    to right,
+    rgba(223, 61, 183, 0.989),
+    rgba(218, 77, 77, 0.972)
+  );
   color: #fff;
   margin-bottom: 15px;
 }
@@ -60,4 +64,9 @@
 .child-list-item .child-dob {
   font-size: 1rem;
   color: #333;
+}
+
+/* Active state for child list item */
+.child-list-item.active {
+  background-color: #facad8;
 }

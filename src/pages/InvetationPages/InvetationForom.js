@@ -5,6 +5,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import { firestore } from '../../firebase/firebase';
 import { doc, updateDoc, arrayUnion } from 'firebase/firestore';
 import { collection, addDoc } from 'firebase/firestore';
+import './InvitationForm.css'; 
 
 const InvitationForm = ({ listOfGifts, childName, childId, friends,summary }) => {
     console.log(summary)
