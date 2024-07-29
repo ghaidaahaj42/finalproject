@@ -18,7 +18,7 @@ const Navbarlist = ({ currentUser, onLogout }) => {
         
         <div className={`nav-menu ${isOpen ? 'open' : ''}`}>
           <NavLink to="/" className="nav-link" onClick={() => setIsOpen(false)}>
-            Home
+            {! currentUser ? 'Home' : 'Profile'}
           </NavLink>
           <NavLink to="/products" className="nav-link" onClick={() => setIsOpen(false)}>
             Products

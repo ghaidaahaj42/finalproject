@@ -10,11 +10,12 @@ import SurveyForm from './pages/AIForom';
 import Products from './Products';
 import './App.css';
 import InvetationPage from './pages/InvetationPages/InvetationPage';
-import InvetationForom from './pages/InvetationPages/InvetationForom'
+import InvetationForom from './pages/InvetationPages/InvetationForom';
 import GiftsPage from './pages/accountPages/GiftsPage';
 import QuestionsPage from './pages/QuestionsPage';
 import Calendar from './pages/accountPages/Calendar';
 import { ChildProvider } from './pages/context/ChildContext';
+import Profile from './pages/accountPages/Profile'; // Assume you have a dashboard or similar page
 
 function App() {
   const [users, setUsers] = useState([]);
@@ -22,6 +23,7 @@ function App() {
     const userInfo = localStorage.getItem('user-info');
     return userInfo ? JSON.parse(userInfo) : null;
   });
+
   useEffect(() => {
     const storedUser = localStorage.getItem('user-info');
     if (storedUser) {
@@ -45,7 +47,7 @@ function App() {
         <Balloons />
         <Navbarlist currentUser={currentUser} onLogout={handleLogout} />
         <Routes>
-          <Route path="/" element={<HomePage />} />
+          <Route path="/" element={currentUser ? <Profile /> : <HomePage />} />
           <Route path="/login" element={<Login users={users} onLogin={handleLogin} />} />
           <Route path="/about" element={<About />} />
           <Route path="/ai-help" element={<SurveyForm />} />

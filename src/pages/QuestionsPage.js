@@ -5,7 +5,10 @@ import QAList from './QAList';
 import AddChildForm from './accountPages/AddChildForm';
 import EditChildForm from './accountPages/EditChildForm';
 import '../styles/questionPage.css';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import EditIcon from '@mui/icons-material/Edit';
+import AddIcon from '@mui/icons-material/Add';
 const QuestionsPage = () => {
   const { childrenData, addChild, updateChild, deleteChild } = useChild();
   const [selectedChild, setSelectedChild] = useState(null);
@@ -49,11 +52,18 @@ const QuestionsPage = () => {
     <div className="questions-page">
       <h1 className="page-title">Answer Questions for Each Child</h1>
       <div className="actions">
-        <button className="btn-add-child" onClick={() => setAddingChild(true)}>Add Child</button>
+      <button className="btn-add-child" onClick={() => setAddingChild(true)}>
+      Add Child
+      <AddIcon style={{ marginRight: '8px' }} />
+    
+    </button>
         {selectedChild && (
           <>
-            <button className="btn-edit-child" onClick={() => setEditingChild(selectedChild)}>Edit Child</button>
-          </>
+    <button className="btn-edit-child" onClick={() => setEditingChild(selectedChild)}>
+    Edit Child
+      <EditIcon style={{ marginRight: '8px' }} />
+  
+    </button>          </>
         )}
       </div>
       <div className="content">
@@ -74,6 +84,14 @@ const QuestionsPage = () => {
       {addingChild && (
         <div className="modal-overlay" onClick={() => setAddingChild(false)}>
           <div className="modal-content" onClick={e => e.stopPropagation()}>
+            <div className="modal-header">
+              <h2>Add Child</h2>
+              <FontAwesomeIcon 
+                icon={faTimes} 
+                className="close-icon" 
+                onClick={() => setAddingChild(false)} 
+              />
+            </div>
             <AddChildForm 
               addChild={handleAddChild} 
               setAddingChild={setAddingChild} 
